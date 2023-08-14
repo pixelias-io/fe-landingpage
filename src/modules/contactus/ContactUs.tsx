@@ -11,13 +11,13 @@ export const ContactUs = () => {
       <div className="grid lg:grid-cols-2 gap-16">
         <div className="lg:text-xl text-lg">
           <p>
-            Whether you're a visionary entrepreneur, an established business, or
-            anyone in between, we're excited to collaborate and bring your
+            Whether you&apos;re a visionary entrepreneur, an established business, or
+            anyone in between, we&apos;re excited to collaborate and bring your
             digital aspirations to life.
           </p>
 
           <p className="mt-4">
-            Let's connect, discuss, and create something amazing together! Your
+            Let&apos;s connect, discuss, and create something amazing together! Your
             journey to digital excellence starts here.
           </p>
         </div>

@@ -15,11 +15,11 @@ export const Leadership = () => {
             innovative digital solutions that transcend expectations.
           </p>
           <p>
-            At Pixelias, his role goes beyond leadership - he's the guiding
+            At Pixelias, his role goes beyond leadership - he&apos;s the guiding
             compass that steers our technical direction and ensures the highest
             standards of project execution. With a deep commitment to delivering
-            excellence and embracing technology's ever-evolving landscape,
-            Matheus's expertise is the heart and soul of our agency.
+            excellence and embracing technology&apos;s ever-evolving landscape,
+            Matheus&apos;s expertise is the heart and soul of our agency.
           </p>
         </div>
         <Image
