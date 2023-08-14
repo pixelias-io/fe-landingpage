@@ -4,6 +4,7 @@ import { Services } from "@/modules/services/Services";
 import { Leadership } from "@/modules/leadership/Leadership";
 import { ContactUs } from "@/modules/contactus/ContactUs";
 import { Hero } from "@/modules/hero/Hero";
+import Head from "next/head";
 
 const archivo = Archivo({ subsets: ["latin"] });
 
@@ -12,6 +13,9 @@ export default function Home() {
     <main
       className={`${archivo.className}`}
     >
+      <Head>
+        <title>Pixelias - Digital Agency</title>
+      </Head>
       <Hero />
       <Services />
       <Leadership />
