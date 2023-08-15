@@ -7,9 +7,9 @@ interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-export const PrimaryButton: FC<PrimaryButtonProps> = ({ children, className = '' }) => {
+export const PrimaryButton: FC<PrimaryButtonProps> = ({ children, className = '', ...props }) => {
   return (
-    <button className={`bg-crimson-pink hover:bg-crimson-pink-300 font-bold text-xl text-white rounded-lg py-4 px-8 ${className}`}>
+    <button className={`bg-crimson-pink hover:bg-crimson-pink-300 font-bold text-xl text-white rounded-lg py-4 px-8 ${className}`} {...props}>
       {children}
     </button>
   );

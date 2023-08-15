@@ -7,9 +7,9 @@ interface SecondaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-export const SecondaryButton: FC<SecondaryButtonProps> = ({ children, className = '' }) => {
+export const SecondaryButton: FC<SecondaryButtonProps> = ({ children, className = '', ...props }) => {
   return (
-    <button className={`border border-crimson-pink hover:bg-crimson-pink-100 font-bold text-xl text-crimson-pink rounded-lg py-4 px-8 ${className}`}>
+    <button className={`border border-crimson-pink hover:bg-crimson-pink-100 font-bold text-xl text-crimson-pink rounded-lg py-4 px-8 ${className}`} {...props}>
       {children}
     </button>
   );
