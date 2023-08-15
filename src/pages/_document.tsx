@@ -1,3 +1,4 @@
+import { useAcceptedCookieConsent } from "@/modules/cookieconsent/CookieConsent.hooks";
 import { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
 import { FC } from "react";
@@ -44,6 +45,29 @@ const MetaTags: FC<MetaTagsProps> = (props) => {
   return metaTags;
 };
 
+const GoogleAnalytics: FC = () => {
+  const acceptedCookies = useAcceptedCookieConsent();
+
+  if (!acceptedCookies) {
+    return null
+  }
+
+  return (
+    <>
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${GA_MEASUREMENT_ID}');
+        `}
+      </Script>
+    </>
+  )
+}
+
 export default function Document() {
   return (
     <Html lang="en">
@@ -60,16 +84,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} />
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-  
-            gtag('config', '${GA_MEASUREMENT_ID}');
-          `}
-        </Script>
+        <GoogleAnalytics />
       </body>
     </Html>
   );
