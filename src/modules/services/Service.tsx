@@ -17,7 +17,7 @@ interface ServiceProps {
 
 export const Service: FC<ServiceProps> = ({ title, icon, description }) => {
   const styleScroll = "snap-center snap-x"
-  const styleBox = "flex flex-col lg:basis-1/3 basis-80 lg:shrink shrink-0 items-start"
+  const styleBox = "flex flex-col lg:basis-1/3 basis-5/6 lg:shrink shrink-0 items-start"
   const stylePadding = "xl:py-16 sm:py-12 py-8 lg:px-12 px-6 sm:px-8"
   const styleShadow = "shadow-2xl shadow-crimson-pink/10"
   const styleRadius = "rounded-lg"
