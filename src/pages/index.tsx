@@ -6,6 +6,7 @@ import { ContactUs } from "@/modules/contactus/ContactUs";
 import { Hero } from "@/modules/hero/Hero";
 import Head from "next/head";
 import dynamic from 'next/dynamic'
+import { Footer } from "@/modules/footer/Footer";
 
 const DynamicCookieBanner = dynamic(() => import("@/modules/cookieconsent/CookieConsent"), {
   ssr: false,
@@ -26,6 +27,7 @@ export default function Home() {
       <Leadership />
       <Companies />
       <ContactUs />
+      <Footer />
       <DynamicCookieBanner />
     </main>
   );
