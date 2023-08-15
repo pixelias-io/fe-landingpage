@@ -24,7 +24,7 @@ export const Leadership = () => {
         </div>
         <Image
           src="/me.png"
-          className="justify-self-center rounded-lg bg-sunset-orange/10 shadow-2xl shadow-midnight-blue/25 pt-8 my-8 lg:my-0"
+          className="justify-self-center rounded-lg bg-gradient-to-tr from-midnight-blue to-fuchsia-950 shadow-2xl shadow-midnight-blue/25 pt-8 my-8 lg:my-0"
           alt="Me"
           height={300}
           width={400}
