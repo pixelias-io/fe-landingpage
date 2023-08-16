@@ -8,26 +8,24 @@ export const Leadership = () => {
       <div className="grid lg:grid-cols-2">
         <div className="flex flex-col gap-8 self-center lg:text-xl text-lg">
           <p>
-            Meet Matheus Moreira, the visionary force behind Pixelias. As the
-            founder and Senior Software Engineer, Matheus brings over 8 years of
-            invaluable hands-on experience in software development to our
-            digital agency. His journey is rooted in a passion for crafting
-            innovative digital solutions that transcend expectations.
+            Introducing Matheus Moreira, the driving visionary of Pixelias. With
+            8+ years of hands-on software development across agencies and
+            product companies, he infuses innovation into our digital agency.
+            Matheus&apos;s journey is fueled by a passion for crafting
+            innovative solutions that surpass expectations.
           </p>
           <p>
-            At Pixelias, his role goes beyond leadership - he&apos;s the guiding
-            compass that steers our technical direction and ensures the highest
-            standards of project execution. With a deep commitment to delivering
-            excellence and embracing technology&apos;s ever-evolving landscape,
-            Matheus&apos;s expertise is the heart and soul of our agency.
+            Within Pixelias, he isn&apos;t just a founder; he&apos;s our
+            technical compass. Matheus shapes our direction and maintains
+            unwavering project excellence, guiding us toward digital brilliance.
           </p>
         </div>
         <Image
           src="/me.png"
           className="justify-self-center rounded-lg bg-gradient-to-tr from-midnight-blue to-fuchsia-950 shadow-2xl shadow-midnight-blue/25 pt-8 my-8 lg:my-0"
           alt="Me"
-          height={300}
-          width={400}
+          height={225}
+          width={300}
         />
       </div>
     </section>
