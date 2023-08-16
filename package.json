@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export",
+    "sitemap": "next-sitemap"
   },
   "dependencies": {
     "@types/node": "20.4.9",
@@ -25,5 +27,8 @@
     "tailwindcss-hero-patterns": "^0.1.2",
     "typescript": "5.1.6",
     "zustand": "^4.4.1"
+  },
+  "devDependencies": {
+    "next-sitemap": "^4.2.2"
   }
 }

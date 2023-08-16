@@ -84,7 +84,12 @@ jobs:
         env:
           NEXT_PUBLIC_FORM_SUBMIT_TOKEN: ${{ secrets.FORM_SUBMIT_TOKEN }}
           NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
-        
+          
+      - name: Generate sitemap and robots.txt
+        run: ${{ steps.detect-package-manager.outputs.runner }} next-sitemap
+        env:
+          SITE_URL: "https://pixelias.io"
+
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
         
