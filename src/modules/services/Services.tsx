@@ -74,7 +74,7 @@ export const Services = () => {
             <Service
               icon={PiShoppingBagLight}
               title="E-commerce"
-              description="Step into the world of online retail with confidence."
+              description="Step into online retail confidently with our e-commerce expertise. We create stunning storefronts using Shopify or Swell, ensuring success in the digital marketplace."
             />
           </ServicesList>
           <ServicesList category="Experimentation">
