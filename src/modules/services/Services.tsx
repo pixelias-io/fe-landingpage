@@ -21,7 +21,7 @@ const ServicesList: FC<ServicesListProps> = ({ children, category }) => {
   return (
     <li className="mb-12 last:mb-0">
       <Heading as="h3">{category}</Heading>
-      <ul className="flex gap-8 snap-mandatory snap-x overflow-x-auto lg:overflow-x-visible">{children}</ul>
+      <ul className="flex gap-8 snap-mandatory snap-x overflow-x-auto lg:overflow-x-visible p-8 lg:p-0 -m-8 lg:-m-0">{children}</ul>
     </li>
   )
 };
