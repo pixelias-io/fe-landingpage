@@ -21,7 +21,7 @@ export const Service: FC<ServiceProps> = ({ title, icon, description }) => {
   const stylePadding = "xl:py-16 sm:py-12 py-8 lg:px-12 px-6 sm:px-8"
   const styleShadow = "shadow-2xl shadow-crimson-pink/10"
   const styleRadius = "rounded-lg"
-  const styleBg = "bg-sunset-orange-100"
+  const styleBg = "bg-sunset-orange/20"
 
   const className = `${styleBox} ${styleScroll} ${stylePadding} ${styleShadow} ${styleRadius} ${styleBg}`
 
