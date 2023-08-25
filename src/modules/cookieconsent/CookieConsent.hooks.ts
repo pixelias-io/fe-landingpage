@@ -7,6 +7,8 @@ interface CookieConsentState {
   declineCookies: () => void;
 }
 
+const STORE_NAME = "cookieconsent-storage";
+
 const useCookieConsentStore = create(
   persist<CookieConsentState>(
     (set) => ({
@@ -15,7 +17,7 @@ const useCookieConsentStore = create(
       declineCookies: () => set({ accepted: false }),
     }),
     {
-      name: "cookieconsent-storage",
+      name: STORE_NAME,
     }
   )
 );
