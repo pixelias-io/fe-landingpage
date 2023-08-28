@@ -26,7 +26,7 @@ export const ContactUs = () => {
           </p>
         </div>
 
-        <form className="flex flex-col gap-6" action={action} method="POST">
+        <form className="flex flex-col gap-6" action={action} method="POST" aria-label="form-contact-us">
           <Input type="text" name="name" placeholder="Your name" required>
             Name
           </Input>
@@ -49,7 +49,12 @@ export const ContactUs = () => {
             Email
           </Input>
 
-          <TextArea name="message" placeholder="What's on your mind?" required>
+          <TextArea
+            name="message"
+            placeholder="What's on your mind?"
+            aria-multiline
+            required
+          >
             Message
           </TextArea>
 
