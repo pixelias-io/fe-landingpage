@@ -20,7 +20,7 @@ export const TextArea: FC<TextareaInputProps> = ({ children, ...props }) => {
   return (
     <InputGroup>
       <Label htmlFor={props.name}>{children}</Label>
-      <textarea className={className} {...props} />
+      <textarea aria-label={props.name} className={className} {...props} />
     </InputGroup>
   );
 };
