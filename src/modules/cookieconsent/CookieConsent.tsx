@@ -4,7 +4,7 @@ import { SecondaryButton } from "../shared/components/Button/SecondaryButton";
 import { Heading } from "../shared/components/Heading/Heading";
 import { useAcceptedCookieConsent, useCookieConsentActions } from "./CookieConsent.hooks";
 
-export const CookieBanner: FC = () => {
+const CookieBanner: FC = () => {
   const { acceptCookies, declineCookies } = useCookieConsentActions();
   const acceptedCookies = useAcceptedCookieConsent();
 
