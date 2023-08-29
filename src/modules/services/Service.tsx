@@ -4,9 +4,9 @@ import { Heading } from "../shared/components/Heading/Heading";
 import { ServiceProps } from "./types";
 
 
-const ServiceIcon: FC<{ Icon: IconType }> = ({ Icon }) => (
+const ServiceIcon: FC<{ Icon: IconType, title: string }> = ({ Icon, title }) => (
   <span className="p-4 mb-4 bg-sunset-orange rounded-full">
-    <Icon size="32" className="text-midnight-blue" />
+    <Icon size="32" className="text-midnight-blue" title={title} role="img" />
   </span>
 );
 
@@ -21,8 +21,8 @@ export const Service: FC<ServiceProps> = ({ title, icon, description }) => {
   const className = `${styleBox} ${styleScroll} ${stylePadding} ${styleShadow} ${styleRadius} ${styleBg}`
 
   return (
-    <li className={className}>
-      <ServiceIcon Icon={icon} />
+    <li className={className} aria-label={`service-${title}`}>
+      <ServiceIcon title={title} Icon={icon} />
       <Heading as="h4" className="text-crimson-pink">{title}</Heading>
       <p>{description}</p>
     </li>
