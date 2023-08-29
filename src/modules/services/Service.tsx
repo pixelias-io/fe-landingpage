@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { IconType } from "react-icons";
 import { Heading } from "../shared/components/Heading/Heading";
+import { ServiceProps } from "./types";
 
 
 const ServiceIcon: FC<{ Icon: IconType }> = ({ Icon }) => (
@@ -8,12 +9,6 @@ const ServiceIcon: FC<{ Icon: IconType }> = ({ Icon }) => (
     <Icon size="32" className="text-midnight-blue" />
   </span>
 );
-
-interface ServiceProps {
-  icon: IconType;
-  title: string;
-  description: string;
-}
 
 export const Service: FC<ServiceProps> = ({ title, icon, description }) => {
   const styleScroll = "snap-center snap-x"
