@@ -1,34 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pixelias Landing Page
+
+In this repository, you'll find the codebase for our agency's Landing Page, which you can access [here](https://pixelias.io/). We've made this repository public to demonstrate the high quality of our agency's code and to showcase the technology stack we employ.
+
+This project is built with [Next.js](https://nextjs.org/) using the [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) template. It leverages TailwindCSS for styling, Jest and React Testing Library for testing purposes, and [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to efficiently optimize and load Archivo, a customized Google Font.
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm ci
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Contributing
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Archivo, a custom Google Font.
+To begin contributing, simply edit the `pages/index.tsx` file. The page will automatically update as you make changes.
 
-## Learn More
+### Color Scheme Additions
 
-To learn more about Next.js, take a look at the following resources:
+If you'd like to introduce a new color to our color scheme, please add it to the `tailwind.config.js` file.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Commit Messages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+We follow a semantic commit message [convention](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716). In the future, we may enforce this using a tool like `semantic-release`.
 
-## Deploy on Vercel
+### Continuous Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+We have continuous deployment in place, which means that any commits pushed to the `main` branch will automatically be reflected on the production website.
