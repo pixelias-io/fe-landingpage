@@ -26,9 +26,11 @@ export const Footer = () => {
     <footer className="bg-midnight-blue text-white flex justify-between items-center p-8 flex-col sm:flex-row gap-6">
       <Image src="/pixelias.png" alt="Pixelias Logo" width={120} height={30} />
 
-      <span>
-        Made with <span className="text-red-500">❤️</span> in BH - Brazil
-      </span>
+      <div className="flex flex-col text-center">
+        <span>Made with <span className="text-red-500">❤️</span> in BH - Brazil</span>
+        <span>Pixelias Digital Agency LTDA</span>
+      </div>
+        
 
       <div className="flex gap-6">
         <FooterLink href="https://www.linkedin.com/company/pixelias">
