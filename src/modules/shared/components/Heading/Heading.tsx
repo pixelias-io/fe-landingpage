@@ -1,8 +1,8 @@
 import { FC, ReactNode } from "react";
-import { HeadingEnum, headingSizeMap } from "./constants";
+import { HeadingEnum, HeadingSizeUnion, headingSizeMap } from "./constants";
 
 interface HeadingProps {
-  as?: HeadingEnum;
+  as?: HeadingSizeUnion;
   className?: string;
   children: ReactNode;
 }

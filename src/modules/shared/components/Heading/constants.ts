@@ -7,6 +7,8 @@ export enum HeadingEnum {
   H6 = 'h6',
 }
 
+export type HeadingSizeUnion = `${HeadingEnum}`
+
 export const headingSizeMap = {
   [HeadingEnum.H1]: {
     size: "xl:text-6xl text-4xl",
