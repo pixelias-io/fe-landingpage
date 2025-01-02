@@ -24,19 +24,21 @@ const Company: FC<CompanyProps> = ({ url, logoSrc, name }) => {
 
 export const Companies = () => {
   return (
-    <section className="w-full bg-midnight-blue/5 lg:p-24 p-8 lg:pt-8 lg:grid lg:grid-cols-2">
+    <section className="w-full bg-indigo-400/10 lg:p-24 p-8 lg:pt-8 lg:grid lg:grid-cols-2">
       <p className="lg:text-xl text-lg mb-8 lg:mb-16">
-        Here are some of the brands he has worked with over the years, either as
-        a freelancer or as a full-time employee:
+        Those are some of the brands he has worked with over the years, either as a freelancer or a full-time employee:
       </p>
 
       <ul className="flex flex-col sm:flex-row justify-around items-center col-span-2">
         {companies.map((company) => (
-          <Card as="li" key={company.name} className="block basis-auto mb-8 last:mb-0 sm:mb-0 shrink-0">
+          <Card
+            as="li"
+            key={company.name}
+          >
             <Company {...company} />
           </Card>
         ))}
       </ul>
     </section>
-  );
+  )
 };
