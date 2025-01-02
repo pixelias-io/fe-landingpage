@@ -13,21 +13,30 @@ export const ContactUs = () => {
       <Heading as="h2">Want to start a project?</Heading>
 
       <div className="grid lg:grid-cols-2 gap-16">
-        <div className="lg:text-xl text-lg">
+        <div className="lg:text-2xl text-lg">
           <p>
-            Whether you&apos;re a visionary entrepreneur, an established
-            business, or anyone in between, we&apos;re excited to collaborate
-            and bring your digital aspirations to life.
+            Whether you&apos;re a visionary entrepreneur, an established business, or anyone in between, we&apos;re
+            excited to collaborate and bring your digital aspirations to life.
           </p>
 
           <p className="mt-4">
-            Let&apos;s connect, discuss, and create something amazing together!
-            Your journey to digital excellence starts here.
+            Let&apos;s connect, discuss, and create something amazing together! Your journey to digital excellence
+            starts here.
           </p>
         </div>
 
-        <form className="flex flex-col gap-6" action={action} method="POST" aria-label="form-contact-us">
-          <Input type="text" name="name" placeholder="Your name" required>
+        <form
+          className="flex flex-col gap-6"
+          action={action}
+          method="POST"
+          aria-label="form-contact-us"
+        >
+          <Input
+            type="text"
+            name="name"
+            placeholder="Your name"
+            required
+          >
             Name
           </Input>
 
@@ -58,11 +67,14 @@ export const ContactUs = () => {
             Message
           </TextArea>
 
-          <PrimaryButton className="self-start" type="submit">
+          <PrimaryButton
+            className="self-start"
+            type="submit"
+          >
             Send Message
           </PrimaryButton>
         </form>
       </div>
     </section>
-  );
+  )
 };
