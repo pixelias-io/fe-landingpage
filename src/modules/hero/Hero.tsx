@@ -1,9 +1,10 @@
 import Image from 'next/image'
 
 import { Heading } from '../shared/components/Heading/Heading'
-import { lazy, PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
+import dynamic from 'next/dynamic'
 
-const LazyHeroAnimation = lazy(() => import('./HeroAnimation'))
+const DynamicHeroAnimation = dynamic(() => import('./HeroAnimation'))
 
 const TextSliderItem = ({ children, delay }: PropsWithChildren<{ delay: number }>) => {
   const animationStyle = {
@@ -60,7 +61,7 @@ export const Hero = () => {
         >
           Transforming Ideas into Exceptional <TextSlider />
         </Heading>
-        <LazyHeroAnimation />
+        <DynamicHeroAnimation />
       </div>
     </section>
   )
