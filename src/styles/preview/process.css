@@ -1,0 +1,170 @@
+/* Process layout and illustrated artwork. */
+#process {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 2.15fr);
+  gap: clamp(30px, 5vw, 75px);
+  align-items: start;
+}
+#process > .split {
+  display: block;
+}
+.process {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 25px;
+  margin-top: 0;
+}
+.step {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.step h3 {
+  margin: 8px 0 4px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+.step p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.42;
+  color: var(--ink);
+}
+.step-art {
+  display: block;
+  position: relative;
+  width: 140px;
+  max-width: 100%;
+  height: 100px;
+  filter: none;
+}
+.step-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  object-fit: contain;
+}
+.step-art svg .ambient-plane,
+.step-art svg circle {
+  animation: none;
+}
+.step-art svg .build-block,
+.step-art svg .ambient-plane {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.step:nth-child(2) .ambient-plane,
+.step:nth-child(4) .ambient-plane {
+  stroke: #fff5fc;
+  stroke-width: 0.7;
+  stroke-linejoin: round;
+  stroke-opacity: 0.12;
+}
+.step .build-block path {
+  stroke: #f8eeff;
+  stroke-opacity: 0.25;
+  stroke-width: 0.6;
+  stroke-linejoin: round;
+}
+#process.visible .step-art > .lottie-stage > svg {
+  animation: none !important;
+  transform: none !important;
+}
+
+@media (max-width: 900px) {
+  #process {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .process {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .step-art svg {
+    animation: none;
+  }
+  #process.visible .step-art svg {
+    animation: step-in var(--motion-art) var(--motion-ease) both;
+  }
+  #process.visible > .split {
+    animation: copy-in var(--motion-reveal) var(--motion-ease) both;
+  }
+  #process.visible .step:nth-child(1) svg {
+    --step-x: -12px;
+    --step-y: 7px;
+    --step-rotate: -4deg;
+  }
+  #process.visible .step:nth-child(2) svg {
+    --step-x: 0px;
+    --step-y: -12px;
+    --step-rotate: 3deg;
+    animation-delay: var(--motion-stagger);
+  }
+  #process.visible .step:nth-child(3) svg {
+    --step-x: 10px;
+    --step-y: 8px;
+    --step-rotate: -3deg;
+    animation-delay: calc(var(--motion-stagger) * 2);
+  }
+  #process.visible .step:nth-child(4) svg {
+    --step-x: -12px;
+    --step-y: 0px;
+    --step-rotate: 2deg;
+    animation-delay: calc(var(--motion-stagger) * 3);
+  }
+  .motion-offscreen .step-art *,
+  .motion-offscreen .step-art {
+    animation-play-state: paused !important;
+  }
+  .step:nth-child(1) svg .ambient-plane {
+    animation: ribbon-breathe 10s ease-in-out infinite alternate;
+  }
+  .step:nth-child(2) svg .ambient-plane {
+    animation: layer-settle 10s ease-in-out infinite alternate;
+  }
+  .step:nth-child(2) svg .ambient-plane:nth-of-type(2) {
+    animation-delay: -2s;
+    animation-duration: 12s;
+  }
+  .step:nth-child(2) svg .ambient-plane:nth-of-type(3) {
+    animation-delay: -4s;
+    animation-duration: 14s;
+  }
+  .step:nth-child(3) svg .build-block {
+    animation: block-align 12s ease-in-out infinite alternate;
+  }
+  .step:nth-child(3) svg .block-2 {
+    animation-delay: -3s;
+    animation-duration: 14s;
+  }
+  .step:nth-child(3) svg .block-3 {
+    animation-delay: -6s;
+    animation-duration: 16s;
+  }
+  .step:nth-child(4) svg .ambient-plane {
+    animation: panel-progress 12s ease-in-out infinite alternate;
+  }
+  .step:nth-child(4) svg .ambient-plane:nth-of-type(2) {
+    animation-delay: -2s;
+  }
+  .step:nth-child(4) svg .ambient-plane:nth-of-type(3) {
+    animation-delay: -4s;
+  }
+  .step:nth-child(4) svg .ambient-plane:nth-of-type(4) {
+    animation-delay: -6s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step-art svg,
+  .step-art svg * {
+    animation: none !important;
+    transform: none !important;
+  }
+}

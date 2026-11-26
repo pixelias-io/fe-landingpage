@@ -13,7 +13,6 @@ export function Header() {
             <img
               src="/preview/assets/logo.svg"
               alt="Pixelias"
-              style={{ width: '170px', height: '52px', objectFit: 'contain' }}
             />
           </a>
           <div className="links">

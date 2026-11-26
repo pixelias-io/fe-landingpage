@@ -1,0 +1,225 @@
+/* Shared keyframes and decorative illustration fallback states. */
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes copy-in {
+    from {
+      opacity: 0.75;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes brand-in {
+    from {
+      opacity: 0.55;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes step-in {
+    from {
+      opacity: 0.45;
+      transform: translate(var(--step-x), var(--step-y)) rotate(var(--step-rotate)) scale(0.94);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes portrait-in {
+    from {
+      opacity: 0.65;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes plane-arrive {
+    0% {
+      opacity: 0;
+      transform: translate(var(--from-x), var(--from-y)) rotate(var(--from-rotation)) scale(0.92);
+    }
+    78% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes draw-lines {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes nodes-in {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes hero-drift {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate(var(--drift-x), var(--drift-y));
+    }
+  }
+  @keyframes accent-breathe {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-4px);
+    }
+  }
+  @keyframes service-plane {
+    from {
+      transform: translate(0, 0) rotate(0);
+    }
+    to {
+      transform: translate(var(--svc-x), var(--svc-y)) rotate(var(--svc-rotate));
+    }
+  }
+  @keyframes contact-light {
+    from {
+      transform: translate3d(-8px, 2px, 0);
+    }
+    to {
+      transform: translate3d(8px, -3px, 0);
+    }
+  }
+  @keyframes line-breathe {
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 0.8;
+    }
+  }
+  @keyframes node-drift {
+    from {
+      opacity: 0.78;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes accent-pair {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-2px);
+    }
+  }
+  @keyframes layer-settle {
+    from {
+      transform: translateY(-3px);
+    }
+    to {
+      transform: translateY(3px);
+    }
+  }
+  @keyframes block-align {
+    from {
+      transform: translateY(-3px);
+    }
+    to {
+      transform: translateY(3px);
+    }
+  }
+  @keyframes panel-progress {
+    from {
+      opacity: 0.7;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes ribbon-breathe {
+    from {
+      opacity: 0.32;
+    }
+    to {
+      opacity: 0.5;
+    }
+  }
+  @keyframes service-unfold {
+    from {
+      transform: rotate(-2.5deg);
+    }
+    to {
+      transform: rotate(2.5deg);
+    }
+  }
+  @keyframes service-assemble {
+    from {
+      transform: translateY(-2px);
+    }
+    to {
+      transform: translateY(2px);
+    }
+  }
+  @keyframes service-explore {
+    from {
+      transform: translateX(-2px);
+    }
+    to {
+      transform: translateX(2px);
+    }
+  }
+  @keyframes service-orbit-drift {
+    from {
+      transform: translateY(-1px);
+    }
+    to {
+      transform: translateY(1px);
+    }
+  }
+}
+
+/* Decorative Lottie stages share the same visibility and still-image fallback. */
+.service-art > .lottie-stage,
+.step-art > .lottie-stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  visibility: hidden;
+  pointer-events: none;
+}
+.service-art.lottie-ready > .lottie-stage,
+.step-art.lottie-ready > .lottie-stage {
+  visibility: visible;
+}
+.service-art.lottie-ready > svg,
+.step-art.lottie-ready > svg {
+  visibility: hidden;
+}
+.service-art.lottie-ready > svg *,
+.step-art.lottie-ready > svg,
+.step-art.lottie-ready > svg * {
+  animation-play-state: paused !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-art > .lottie-stage,
+  .step-art > .lottie-stage {
+    display: none !important;
+  }
+  .service-art > svg,
+  .step-art > svg {
+    visibility: visible !important;
+  }
+}

@@ -1,0 +1,304 @@
+/* Hero layout, SVG artwork and motion. */
+@media (max-width: 800px) {
+  .art {
+    grid-row: 2;
+  }
+}
+.hero {
+  display: grid;
+  align-items: center;
+  min-height: 500px;
+  padding-top: 65px;
+  padding-bottom: 100px;
+  grid-template-columns: 1fr 1.08fr;
+  gap: 20px;
+}
+.hero h1 {
+  margin: 0 0 27px;
+  max-width: 650px;
+  font-weight: 400;
+  font-size: clamp(42px, 4.35vw, 60px);
+  letter-spacing: -0.045em;
+  line-height: 1.07;
+}
+.hero p.hero-lead {
+  max-width: 570px;
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+.hero p.hero-descriptor {
+  max-width: 430px;
+  margin: 0;
+  color: #233657;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.art {
+  height: auto;
+  overflow: visible;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  display: block;
+  aspect-ratio: 600 / 310;
+  max-width: 100%;
+}
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 55px;
+    padding-bottom: 55px;
+    gap: 15px;
+  }
+  .hero .art {
+    height: auto;
+    grid-row: auto;
+    max-height: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1,
+  .hero-lead,
+  .hero-descriptor {
+    animation: copy-in var(--motion-reveal) var(--motion-ease) both;
+  }
+  .hero-lead {
+    animation-delay: 80ms;
+  }
+  .hero-descriptor {
+    animation-delay: 160ms;
+  }
+}
+.hero-illustration {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.hero-plane,
+.hero-nodes {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-connections path {
+    stroke-dasharray: 650;
+    stroke-dashoffset: 650;
+    animation: draw-lines 1200ms var(--motion-ease) 600ms both;
+  }
+  .hero-connections path:nth-child(2) {
+    animation-delay: 760ms;
+  }
+  .hero-nodes {
+    animation: nodes-in 700ms var(--motion-ease) 950ms both;
+  }
+}
+@media (max-width: 700px) {
+  .hero-plane {
+    --from-x: 0px !important;
+    --from-y: 8px !important;
+    --from-rotation: 0deg !important;
+    --drift-x: 2px !important;
+    --drift-y: 4px !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-plane,
+  .hero-nodes,
+  .hero-connections path {
+    animation: none !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-plane {
+    animation-name: plane-arrive, hero-drift;
+    animation-duration: 1450ms, 8s;
+    animation-timing-function: var(--motion-ease), ease-in-out;
+    animation-delay: var(--entry-delay, 0s), 2.1s;
+    animation-iteration-count: 1, infinite;
+    animation-direction: normal, alternate;
+    animation-fill-mode: both, none;
+    --from-x: 0px;
+    --from-y: 0px;
+    --from-rotation: 0deg;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-nodes rect {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-plane:nth-of-type(2n) {
+    animation-duration: 1450ms, 9.5s;
+    animation-direction: normal, alternate;
+  }
+  .hero-nodes rect {
+    animation: node-drift 7.5s ease-in-out 2.1s infinite alternate;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .hero-nodes rect:nth-child(3n) {
+    animation-duration: 9s;
+    animation-direction: alternate-reverse;
+  }
+  .hero-nodes rect:nth-child(3n + 1) {
+    animation-delay: 3s;
+  }
+  .hero-connections {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: line-breathe 10s ease-in-out 2.2s infinite alternate;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-connections {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+.hero-system {
+  transform: translate(var(--system-x, 0px), var(--system-y, 0px));
+  will-change: transform;
+}
+.hero-light {
+  transform: translate(var(--light-x, 0px), var(--light-y, 0px));
+  opacity: var(--light-opacity, 1);
+}
+.hero-energy {
+  pointer-events: none;
+}
+.hero-energy circle {
+  opacity: 0;
+}
+.motion-running .hero-energy circle {
+  opacity: 0.8;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .motion-offscreen .hero-plane,
+  .motion-offscreen .hero-nodes,
+  .motion-offscreen .hero-nodes rect,
+  .motion-offscreen .hero-connections,
+  .motion-offscreen .hero-connections path {
+    animation-play-state: paused !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-system,
+  .hero-light {
+    transform: none !important;
+  }
+  .hero-energy circle {
+    opacity: 0 !important;
+  }
+}
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: clamp(39px, 5vw, 54px);
+  }
+}
+@media (max-width: 700px) {
+  .hero h1 {
+    font-size: clamp(39px, 9.8vw, 58px);
+    line-height: 1.08;
+  }
+  .hero p.hero-lead {
+    font-size: 16px;
+  }
+  .hero p.hero-descriptor {
+    font-size: 16px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .warm-one {
+    --from-x: -45px;
+    --from-y: 12px;
+    --from-rotation: -5deg;
+    --entry-delay: 70ms;
+    --drift-x: 9px;
+    --drift-y: -11px;
+  }
+
+  .warm-two {
+    --from-x: -32px;
+    --from-y: -16px;
+    --from-rotation: 4deg;
+    --entry-delay: 160ms;
+    --drift-x: -8px;
+    --drift-y: 10px;
+  }
+
+  .warm-three {
+    --from-x: -26px;
+    --from-y: 21px;
+    --from-rotation: -4deg;
+    --entry-delay: 270ms;
+    --drift-x: 11px;
+    --drift-y: 8px;
+  }
+
+  .cool-one {
+    --from-x: 38px;
+    --from-y: 14px;
+    --from-rotation: 4deg;
+    --entry-delay: 150ms;
+    --drift-x: -10px;
+    --drift-y: 8px;
+  }
+
+  .cool-two {
+    --from-x: 29px;
+    --from-y: 24px;
+    --from-rotation: -4deg;
+    --entry-delay: 270ms;
+    --drift-x: 9px;
+    --drift-y: -11px;
+  }
+
+  .cool-three {
+    --from-x: 48px;
+    --from-y: -17px;
+    --from-rotation: 4deg;
+    --entry-delay: 80ms;
+    --drift-x: -9px;
+    --drift-y: -8px;
+  }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: no-preference) {
+  .warm-one,
+  .cool-two {
+    --drift-x: 6px !important;
+    --drift-y: -8px !important;
+  }
+  .warm-two,
+  .cool-three {
+    --drift-x: -6px !important;
+    --drift-y: 7px !important;
+  }
+  .warm-three {
+    --drift-x: 8px !important;
+    --drift-y: 6px !important;
+  }
+  .cool-one {
+    --drift-x: -7px !important;
+    --drift-y: 6px !important;
+  }
+}
+.hero-nodes {
+  filter: drop-shadow(0 0 3px #ed9cde88);
+}
+.hero-nodes rect {
+  stroke: #fff7f3;
+  stroke-opacity: 0.5;
+  stroke-width: 0.7;
+}
