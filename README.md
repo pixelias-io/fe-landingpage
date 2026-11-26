@@ -1,37 +1,15 @@
-# Pixelias Landing Page
+# Pixelias landing page
 
-In this repository, you'll find the codebase for our agency's Landing Page, which you can access [here](https://pixelias.io/). We've made this repository public to demonstrate the high quality of our agency's code and to showcase the technology stack we employ.
+A Next.js implementation of the Pixelias studio preview. The home page uses separate React components for the header, hero, services, experience, process, founder, contact, and footer. Artwork and fonts are served locally from `public/preview/assets`.
 
-This project is built with [Next.js](https://nextjs.org/) using the [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) template. It leverages TailwindCSS for styling, Jest and React Testing Library for testing purposes, and [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to efficiently optimize and load Archivo, a customized Google Font.
+## Run locally
 
-## Getting Started
+Install dependencies with `npm ci`, then run `npm run dev`. The page is available at http://localhost:3000. For the contact form, configure `NEXT_PUBLIC_FORM_SUBMIT_TOKEN` in `.env.local` with the existing FormSubmit destination token. Never commit this file. The form is disabled with an explanatory message when the setting is missing. The GitHub Pages build already receives this setting from the repository secret.
 
-First, install the dependencies:
+Run `npm test -- --runInBand` for the existing tests and the preview's translation and validation test. Run `npm run build` followed by `npx next export` to check the static export used by the existing Pages workflow. Form submissions use the existing FormSubmit POST; validation is local, and FormSubmit handles the response. No real message is needed to test validation.
 
-```bash
-npm ci
-```
+## Preview behavior
 
-Then, run the development server:
+English and Portuguese copy is held in `src/components/preview/Locale.tsx` and `portuguese.js`. The default English copy is colocated with its components. The decorative SVG and Lottie artwork is hidden from assistive technology; reduced motion, failed animation loading, and disabled JavaScript retain the static SVG artwork. Motion pauses offscreen and when the page is hidden.
 
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Contributing
-
-To begin contributing, simply edit the `pages/index.tsx` file. The page will automatically update as you make changes.
-
-### Color Scheme Additions
-
-If you'd like to introduce a new color to our color scheme, please add it to the `tailwind.config.js` file.
-
-### Commit Messages
-
-We follow a semantic commit message [convention](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716). In the future, we may enforce this using a tool like `semantic-release`.
-
-### Continuous Deployment
-
-We have continuous deployment in place, which means that any commits pushed to the `main` branch will automatically be reflected on the production website.
+This branch reproduces the studio preview. Unlike the previous production page, the preview does not currently include the prior cookie banner or Google Analytics integration. Those need a separate product decision and implementation before replacing production. The form endpoint is controlled by the existing environment configuration.

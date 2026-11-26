@@ -1,0 +1,50 @@
+import { useLocale } from './Locale'
+export function Header() {
+  const { t, locale, setLocale } = useLocale()
+
+  return (
+    <header>
+      <div className="wrap">
+        <nav aria-label={locale === 'pt' ? 'Navegação principal' : 'Main navigation'}>
+          <a
+            className="brand"
+            href="#top"
+          >
+            <img
+              src="/preview/assets/logo.svg"
+              alt="Pixelias"
+              style={{ width: '170px', height: '52px', objectFit: 'contain' }}
+            />
+          </a>
+          <div className="links">
+            <a href="#services">{t('navServices', 'What we do')}</a>
+            <a href="#process">{t('navProcess', 'How we work')}</a>
+            <a href="#about">{t('navAbout', 'About')}</a>
+            <a href="#contact">{t('navContact', 'Contact')}</a>
+            <div
+              className="lang"
+              aria-label={locale === 'pt' ? 'Idioma' : 'Language'}
+            >
+              <button
+                type="button"
+                data-lang="en"
+                onClick={() => setLocale('en')}
+                aria-pressed={locale === 'en'}
+              >
+                {'EN'}
+              </button>
+              <button
+                type="button"
+                data-lang="pt"
+                onClick={() => setLocale('pt')}
+                aria-pressed={locale === 'pt'}
+              >
+                {'PT'}
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  )
+}
