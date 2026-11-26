@@ -3,7 +3,7 @@ import { Hero } from './Hero'
 import { LocaleProvider } from './Locale'
 import { mountMotion } from './motion'
 
-test('hero motion runs in view, pauses on request, resumes, and cleans up', () => {
+test('hero motion runs in view, pauses in a hidden tab, resumes, and cleans up', () => {
   const originalObserver = window.IntersectionObserver
   const originalMatchMedia = window.matchMedia
   const hidden = Object.getOwnPropertyDescriptor(document, 'hidden')
@@ -43,12 +43,12 @@ test('hero motion runs in view, pauses on request, resumes, and cleans up', () =
   const first = path.getAttribute('d')
   nextFrame?.(1050)
   expect(path.getAttribute('d')).not.toBe(first)
-  document.documentElement.setAttribute('data-motion-paused', '')
-  document.dispatchEvent(new Event('pixelias-motion-change'))
+  Object.defineProperty(document, 'hidden', { configurable: true, value: true })
+  document.dispatchEvent(new Event('visibilitychange'))
   expect(cancel).toHaveBeenCalledWith(1)
   const calls = request.mock.calls.length
-  document.documentElement.removeAttribute('data-motion-paused')
-  document.dispatchEvent(new Event('pixelias-motion-change'))
+  Object.defineProperty(document, 'hidden', { configurable: true, value: false })
+  document.dispatchEvent(new Event('visibilitychange'))
   expect(request.mock.calls.length).toBeGreaterThan(calls)
   cleanup()
   expect(cancel).toHaveBeenCalled()

@@ -10,7 +10,7 @@ Run `npm test -- --runInBand` for the component, accessibility, motion and form 
 
 ## Preview behavior
 
-English and Portuguese copy is held in `src/components/preview/Locale.tsx` and `portuguese.js`. The default English copy is colocated with its components. The decorative SVG and Lottie artwork is hidden from assistive technology; reduced motion, failed animation loading, and disabled JavaScript retain the static SVG artwork. Motion pauses offscreen and when the page is hidden. The header provides a bilingual pause/resume control for the hero, illustrations and ambient motion; the system reduced-motion preference remains independent. When JavaScript or motion preference detection is unavailable, the artwork remains still.
+English and Portuguese copy is held in `src/components/preview/Locale.tsx` and `portuguese.js`. The default English copy is colocated with its components. The decorative SVG and Lottie artwork is hidden from assistive technology; reduced motion, failed animation loading, and disabled JavaScript retain the static SVG artwork. Motion pauses offscreen and when the page is hidden. The system reduced-motion preference is respected. When JavaScript or motion preference detection is unavailable, the artwork remains still.
 
 The `Illustration` component associates each SVG with its Lottie asset and handles viewport, visibility and reduced-motion preferences. It lazy-loads `LottiePlayer`, which uses `lottie-react`'s light SVG renderer. Animation downloads are cancelled when the player unmounts, and the original SVG stays visible if the player or data cannot load. The hero has a separate motion controller. Lottie dependency licenses are included in `public/third-party-notices`.
 
