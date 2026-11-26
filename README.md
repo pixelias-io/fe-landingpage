@@ -35,7 +35,3 @@ We follow a semantic commit message [convention](https://gist.github.com/joshbuc
 ### Continuous Deployment
 
 We have continuous deployment in place, which means that any commits pushed to the `main` branch will automatically be reflected on the production website.
-
-## Published landing page
-
-GitHub Pages deploys the static files in `published-site/` through the Pages workflow. The existing Next.js source remains in this repository for history and rollback. The public form uses the existing FormSubmit destination.
