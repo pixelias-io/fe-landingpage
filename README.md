@@ -6,7 +6,7 @@ A Next.js implementation of the Pixelias studio preview. The home page uses sepa
 
 Install dependencies with `npm ci`, then run `npm run dev`. The page is available at http://localhost:3000. For the contact form, configure `NEXT_PUBLIC_FORM_SUBMIT_TOKEN` in `.env.local` with the existing FormSubmit destination token. Never commit this file. The form is disabled with an explanatory message when the setting is missing. The GitHub Pages build already receives this setting from the repository secret.
 
-Run `npm test -- --runInBand` for the existing tests and the preview's translation and validation test. Run `npm run build` followed by `npx next export` to check the static export used by the existing Pages workflow. Form submissions use the existing FormSubmit POST; validation is local, and FormSubmit handles the response. No real message is needed to test validation.
+Run `npm test -- --runInBand` for the component, accessibility, motion and form tests. The same suite runs for pull requests in GitHub Actions without production secrets. Run `npm run build` followed by `npx next export` to check the static export used by the existing Pages workflow. Form submissions use the existing FormSubmit POST; validation is local, and FormSubmit handles the response. No real message is needed to test validation.
 
 ## Preview behavior
 

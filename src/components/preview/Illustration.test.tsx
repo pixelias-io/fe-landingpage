@@ -17,6 +17,13 @@ jest.mock('./LottiePlayer', () => {
   return { __esModule: true, default: MockPlayer }
 })
 
+const originalObserver = window.IntersectionObserver
+const originalMatchMedia = window.matchMedia
+afterEach(() => {
+  Object.defineProperty(window, 'IntersectionObserver', { configurable: true, value: originalObserver })
+  Object.defineProperty(window, 'matchMedia', { configurable: true, value: originalMatchMedia })
+})
+
 let intersect: (visible: boolean) => void
 let setPreference: (reduced: boolean) => void
 beforeEach(() => {
@@ -124,4 +131,21 @@ test('the page motion control pauses and resumes a loaded illustration', async (
   act(() => screen.getByRole('button', { name: 'Resume motion' }).click())
   expect(screen.getByTestId('player')).toHaveAttribute('data-active', 'true')
   expect(document.documentElement).not.toHaveAttribute('data-motion-paused')
+})
+
+test('does not initialize an illustration when intersection observation is unavailable', () => {
+  Object.defineProperty(window, 'IntersectionObserver', { configurable: true, value: undefined })
+  // Removing the property entirely matches browsers without the API.
+  delete (window as { IntersectionObserver?: typeof IntersectionObserver }).IntersectionObserver
+  const { container } = render(
+    <Illustration
+      asset="service-build"
+      className="service-art"
+    >
+      <svg data-testid="static-art" />
+    </Illustration>
+  )
+  expect(screen.getByTestId('static-art')).toBeInTheDocument()
+  expect(screen.queryByTestId('player')).not.toBeInTheDocument()
+  expect(container.firstChild).not.toHaveClass('lottie-ready')
 })

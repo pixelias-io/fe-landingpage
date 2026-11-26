@@ -72,3 +72,36 @@ test('stops a running animation immediately when its renderer fails', async () =
   expect(animationItem.pause).toHaveBeenCalledTimes(1)
   await waitFor(() => expect(onReady).toHaveBeenLastCalledWith(false))
 })
+
+test('plays only when active and pauses a loaded animation when inactive', async () => {
+  const { useLottieLight } = require('lottie-react')
+  const player = {
+    state: 'stopped',
+    playableFrames: 240,
+    animationItem: { addEventListener: jest.fn(), removeEventListener: jest.fn() },
+    play: jest.fn(),
+    pause: jest.fn(),
+    setDisplayRef: jest.fn()
+  }
+  useLottieLight.mockReturnValue(player)
+  global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ v: '5.0', layers: [] }) })
+  const onReady = jest.fn()
+  const { rerender, container } = render(
+    <LottiePlayer
+      asset="service-learn"
+      active={false}
+      onReady={onReady}
+    />
+  )
+  await waitFor(() => expect(player.pause).toHaveBeenCalled())
+  expect(onReady).toHaveBeenLastCalledWith(true)
+  expect(container.querySelector('.lottie-stage')).toHaveAttribute('aria-hidden', 'true')
+  rerender(
+    <LottiePlayer
+      asset="service-learn"
+      active
+      onReady={onReady}
+    />
+  )
+  await waitFor(() => expect(player.play).toHaveBeenCalled())
+})
