@@ -1,41 +1,23 @@
-import { fireEvent, render } from "@testing-library/react";
-import { ContactUs } from "./ContactUs";
-import { randomBytes } from "crypto";
+import { fireEvent, render, screen } from '@testing-library/react'
+import { ContactUs } from './ContactUs'
 
-const inputs = [
-  { role: "textbox", name: "name" },
-  { role: "textbox", name: "company" },
-  { role: "textbox", name: "email" },
-  { role: "textbox", name: "message" },
-];
+const fields = [
+  { label: 'Name', name: 'name', value: 'Test Person' },
+  { label: 'Company', name: 'company', value: 'Test Company' },
+  { label: 'Email', name: 'email', value: 'person@example.test' },
+  { label: 'Message', name: 'message', value: 'Test project' }
+]
 
-describe("Contact Us", () => {
-  test.each(inputs)("should have a form with a $name $role", (input) => {
-    const { getByLabelText } = render(<ContactUs />);
+test.each(fields)('legacy form requires the $label field', ({ label }) => {
+  render(<ContactUs />)
+  expect(screen.getByRole('textbox', { name: label })).toBeRequired()
+})
 
-    const textbox = getByLabelText(input.name);
-    expect(textbox).toHaveAttribute('required');
-  });
-  
-  test("should submit the form values", () => {
-    const { getByLabelText, getByRole } = render(<ContactUs />);
-
-    const values = inputs.map(input => ({
-      name: input.name,
-      value: randomBytes(10).toString('hex')
-    }))
-
-    values.forEach(({ name, value }) => {
-      fireEvent.change(getByLabelText(name), { target: { value } })
-    })
-
-    fireEvent.click(getByRole('button', { name: /send message/i }))
-
-    const mapValues = values.reduce((acc: Record<string, string>, { name, value }) => {
-      acc[name] = value
-      return acc
-    }, {})
-
-    expect(getByRole('form')).toHaveFormValues(mapValues)
-  })
-});
+test('legacy form retains entered values without sending a message', () => {
+  render(<ContactUs />)
+  for (const field of fields)
+    fireEvent.change(screen.getByRole('textbox', { name: field.label }), { target: { value: field.value } })
+  expect(screen.getByRole('form', { name: 'form-contact-us' })).toHaveFormValues(
+    Object.fromEntries(fields.map(({ name, value }) => [name, value]))
+  )
+})

@@ -1,0 +1,175 @@
+/* Service layout and illustrated artwork. */
+
+.service {
+  border: 0;
+  position: relative;
+  padding: 6px 0 28px 120px;
+}
+
+.service h3 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.service p {
+  margin: 4px 0 0;
+  max-width: 570px;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #services.visible > div:first-child {
+    animation: copy-in var(--motion-reveal) var(--motion-ease) both;
+  }
+  #services.visible .service h3,
+  #services.visible .service p {
+    animation: copy-in var(--motion-reveal) var(--motion-ease) both;
+  }
+  #services.visible .service:nth-child(2) h3,
+  #services.visible .service:nth-child(2) p {
+    animation-delay: var(--motion-stagger);
+  }
+  #services.visible .service:nth-child(3) h3,
+  #services.visible .service:nth-child(3) p {
+    animation-delay: calc(var(--motion-stagger) * 2);
+  }
+}
+.service-art svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.service-art path {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .service-art svg > path {
+    animation: service-plane 13s ease-in-out infinite alternate;
+    --svc-x: 0px;
+    --svc-y: 0px;
+    --svc-rotate: 0deg;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .service:hover .service-art svg > path {
+      animation-duration: 4s;
+    }
+  }
+  .motion-offscreen .service-art * {
+    animation-play-state: paused !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-art svg * {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+.service-art svg > path {
+  stroke: #fff4ed;
+  stroke-width: 0.8;
+  stroke-opacity: 0.38;
+  stroke-linejoin: round;
+}
+.service-art {
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+  width: 110px;
+  height: 85px;
+  top: -10px;
+}
+@media (max-width: 360px) {
+  .service-art {
+    width: 96px;
+    height: 78px;
+  }
+  .service {
+    padding-left: 106px;
+  }
+}
+.service-part {
+  transform-box: view-box;
+}
+.launch-back,
+.launch-middle,
+.launch-front {
+  transform-origin: 20px 88px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .launch-back {
+    animation: service-unfold 9s ease-in-out infinite alternate;
+  }
+  .launch-middle {
+    animation: service-unfold 11s ease-in-out -3s infinite alternate-reverse;
+  }
+  .launch-front {
+    animation: service-unfold 13s ease-in-out -6s infinite alternate;
+  }
+  .learn-back {
+    animation: service-explore 12s ease-in-out infinite alternate;
+  }
+  .learn-middle {
+    animation: service-explore 15s ease-in-out -4s infinite alternate-reverse;
+  }
+  .learn-front {
+    animation: service-explore 13s ease-in-out -7s infinite alternate;
+  }
+  .motion-offscreen .service-art .service-part {
+    animation-play-state: paused !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-part {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+@media (max-width: 480px) {
+  .service {
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    column-gap: 10px;
+    align-items: center;
+    padding: 6px 0 28px;
+  }
+  .service-art {
+    position: relative;
+    left: auto;
+    top: auto;
+    grid-column: 1;
+    grid-row: 1;
+    width: 96px;
+    height: 78px;
+  }
+  .service h3 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .service p {
+    grid-column: 1 / -1;
+    margin: 4px 0 0;
+  }
+}
+.service-1 .lottie-stage {
+  background: radial-gradient(ellipse at 45% 60%, #f4b4df40, transparent 68%);
+}
+.service-orbit {
+  transform-box: view-box;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .service-orbit {
+    animation: service-orbit-drift 8s ease-in-out infinite alternate;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-orbit {
+    animation: none !important;
+    transform: none !important;
+  }
+}

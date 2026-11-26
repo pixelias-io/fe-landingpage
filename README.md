@@ -1,37 +1,21 @@
-# Pixelias Landing Page
+# Pixelias landing page
 
-In this repository, you'll find the codebase for our agency's Landing Page, which you can access [here](https://pixelias.io/). We've made this repository public to demonstrate the high quality of our agency's code and to showcase the technology stack we employ.
+A Next.js implementation of the Pixelias studio preview. The home page uses separate React components for the header, hero, services, experience, process, founder, contact, and footer. Artwork and fonts are served locally from `public/preview/assets`.
 
-This project is built with [Next.js](https://nextjs.org/) using the [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) template. It leverages TailwindCSS for styling, Jest and React Testing Library for testing purposes, and [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to efficiently optimize and load Archivo, a customized Google Font.
+## Run locally
 
-## Getting Started
+Install dependencies with `npm ci`, then run `npm run dev`. The page is available at http://localhost:3000. For the contact form, configure `NEXT_PUBLIC_FORM_SUBMIT_TOKEN` in `.env.local` with the existing FormSubmit destination token. Never commit this file. The form is disabled with an explanatory message when the setting is missing. The GitHub Pages build already receives this setting from the repository secret.
 
-First, install the dependencies:
+Run `npm test -- --runInBand` for the component, accessibility, motion and form tests. The same suite runs for pull requests in GitHub Actions without production secrets. Run `npm run build` followed by `npx next export` to check the static export used by the existing Pages workflow. Form submissions use the existing FormSubmit POST; validation is local, and FormSubmit handles the response. No real message is needed to test validation.
 
-```bash
-npm ci
-```
+## Preview behavior
 
-Then, run the development server:
+English and Portuguese copy is held in `src/components/preview/Locale.tsx` and `portuguese.js`. The default English copy is colocated with its components. The decorative SVG and Lottie artwork is hidden from assistive technology; reduced motion, failed animation loading, and disabled JavaScript retain the static SVG artwork. Motion pauses offscreen and when the page is hidden. The header provides a bilingual pause/resume control for the hero, illustrations and ambient motion; the system reduced-motion preference remains independent. When JavaScript or motion preference detection is unavailable, the artwork remains still.
 
-```bash
-npm run dev
-```
+The `Illustration` component associates each SVG with its Lottie asset and handles viewport, visibility and reduced-motion preferences. It lazy-loads `LottiePlayer`, which uses `lottie-react`'s light SVG renderer. Animation downloads are cancelled when the player unmounts, and the original SVG stays visible if the player or data cannot load. The hero has a separate motion controller. Lottie dependency licenses are included in `public/third-party-notices`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This branch reproduces the studio preview. Unlike the previous production page, the preview does not currently include the prior cookie banner or Google Analytics integration. Those need a separate product decision and implementation before replacing production. The form endpoint is controlled by the existing environment configuration.
 
-## Contributing
+## Styles
 
-To begin contributing, simply edit the `pages/index.tsx` file. The page will automatically update as you make changes.
-
-### Color Scheme Additions
-
-If you'd like to introduce a new color to our color scheme, please add it to the `tailwind.config.js` file.
-
-### Commit Messages
-
-We follow a semantic commit message [convention](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716). In the future, we may enforce this using a tool like `semantic-release`.
-
-### Continuous Deployment
-
-We have continuous deployment in place, which means that any commits pushed to the `main` branch will automatically be reflected on the production website.
+Styles live in `src/styles/preview/`: `base.css` contains tokens, typography and shared controls; the other files are named for page sections. Shared keyframes and Lottie fallback states live in `motion.css`. Imports in `src/pages/_app.tsx` define their cascade order. Keep responsive and motion rules with the section they affect, and check reduced motion and the still SVG fallback when changing illustration styles.
