@@ -1,131 +1,4 @@
-/* The SVG artwork is React-owned; these controllers animate its decorative layers. */
-let playerPromise
-function loadPlayer() {
-  if (!playerPromise)
-    playerPromise = new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = '/preview/assets/lottie/lottie-light-5.13.0.min.js'
-      script.onload = () => (window.lottie ? resolve(window.lottie) : reject(new Error('Player unavailable')))
-      script.onerror = reject
-      document.head.append(script)
-    })
-  return playerPromise
-}
-
-function mountLottie() {
-  if (!('IntersectionObserver' in window) || !window.matchMedia) return () => {}
-  let disposed = false
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)')
-  const names = [
-    'launch-prototype',
-    'service-build',
-    'service-learn',
-    'process-understand',
-    'process-shape',
-    'process-build',
-    'process-improve'
-  ]
-  const illustrations = [...document.querySelectorAll('.service-art, #process .step-art')]
-  const states = illustrations
-    .map((art, i) => {
-      const stage = art.querySelector('.lottie-stage')
-      if (!stage) return null
-      return {
-        art,
-        stage,
-        name: names[i],
-        visible: false,
-        animation: null,
-        loading: false,
-        failed: false,
-        generation: 0
-      }
-    })
-    .filter((state) => state && state.name)
-  function destroy(state) {
-    state.generation++
-    state.art.classList.remove('lottie-ready')
-    if (state.animation) state.animation.destroy()
-    state.animation = null
-  }
-  function eligible(state) {
-    return !disposed && state.visible && !reduced.matches && !document.hidden
-  }
-  async function sync(state) {
-    if (reduced.matches) {
-      destroy(state)
-      return
-    }
-    if (!eligible(state)) {
-      if (state.animation) state.animation.pause()
-      return
-    }
-    if (state.animation) {
-      state.animation.play()
-      return
-    }
-    if (state.loading || state.failed) return
-    state.loading = true
-    const version = state.generation
-    try {
-      const player = await loadPlayer()
-      if (version !== state.generation || !eligible(state)) return
-      const instance = player.loadAnimation({
-        container: state.stage,
-        renderer: 'svg',
-        loop: true,
-        autoplay: false,
-        path: `/preview/assets/lottie/${state.name}.json?v=${state.name.startsWith('process-') ? 2 : 4}`,
-        rendererSettings: { preserveAspectRatio: 'xMidYMid meet' }
-      })
-      state.animation = instance
-      instance.addEventListener('DOMLoaded', () => {
-        if (state.animation !== instance || reduced.matches) return
-        state.art.classList.add('lottie-ready')
-        if (eligible(state)) instance.play()
-      })
-      const fallback = () => {
-        if (state.animation === instance) {
-          state.failed = true
-          destroy(state)
-        }
-      }
-      instance.addEventListener('data_failed', fallback)
-      instance.addEventListener('error', fallback)
-    } catch (_) {
-      state.failed = true
-      destroy(state)
-    } finally {
-      state.loading = false
-      if (version !== state.generation && eligible(state) && !state.animation && !state.failed) sync(state)
-    }
-  }
-  const byElement = new Map(states.map((state) => [state.art, state]))
-  const observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        const state = byElement.get(entry.target)
-        state.visible = entry.isIntersecting
-        sync(state)
-      }
-    },
-    { rootMargin: '100px' }
-  )
-  states.forEach((state) => observer.observe(state.art))
-  const syncAll = () => states.forEach(sync)
-  document.addEventListener('visibilitychange', syncAll)
-  if (reduced.addEventListener) reduced.addEventListener('change', syncAll)
-  else if (reduced.addListener) reduced.addListener(syncAll)
-
-  return () => {
-    disposed = true
-    observer.disconnect()
-    document.removeEventListener('visibilitychange', syncAll)
-    if (reduced.removeEventListener) reduced.removeEventListener('change', syncAll)
-    else if (reduced.removeListener) reduced.removeListener(syncAll)
-    states.forEach(destroy)
-  }
-}
+/* Hero choreography and section reveal behavior. */
 function mountHero() {
   if (!('IntersectionObserver' in window)) return () => {}
   const art = document.querySelector('.art')
@@ -342,11 +215,9 @@ export function mountMotion() {
     )
     document.querySelectorAll('.reveal').forEach((element) => observer.observe(element))
   } else document.querySelectorAll('.reveal').forEach((element) => element.classList.add('visible'))
-  const stopHero = mountHero(),
-    stopLottie = mountLottie()
+  const stopHero = mountHero()
   return () => {
     if (observer) observer.disconnect()
     stopHero()
-    stopLottie()
   }
 }

@@ -1,3 +1,4 @@
+import { Illustration } from './Illustration'
 import { useLocale } from './Locale'
 export function Process() {
   const { t, locale, setLocale } = useLocale()
@@ -13,9 +14,9 @@ export function Process() {
       </div>
       <div className="process">
         <div className="step">
-          <span
+          <Illustration
             className="step-art"
-            aria-hidden="true"
+            asset="process-understand"
           >
             <svg
               aria-hidden="true"
@@ -292,18 +293,14 @@ export function Process() {
                 fill="#ffa019"
               ></circle>
             </svg>
-            <span
-              className="lottie-stage"
-              aria-hidden="true"
-            />
-          </span>
+          </Illustration>
           <h3>{t('step1', 'Understand')}</h3>
           <p>{t('step1d', 'Get to know your goals and users.')}</p>
         </div>
         <div className="step">
-          <span
+          <Illustration
             className="step-art"
-            aria-hidden="true"
+            asset="process-shape"
           >
             <svg
               aria-hidden="true"
@@ -488,18 +485,14 @@ export function Process() {
                 fill="#dc3af1"
               ></circle>
             </svg>
-            <span
-              className="lottie-stage"
-              aria-hidden="true"
-            />
-          </span>
+          </Illustration>
           <h3>{t('step2', 'Shape')}</h3>
           <p>{t('step2d', 'Agree on a practical direction.')}</p>
         </div>
         <div className="step">
-          <span
+          <Illustration
             className="step-art"
-            aria-hidden="true"
+            asset="process-build"
           >
             <svg
               aria-hidden="true"
@@ -682,18 +675,14 @@ export function Process() {
                 fill="#ff8d38"
               ></circle>
             </svg>
-            <span
-              className="lottie-stage"
-              aria-hidden="true"
-            />
-          </span>
+          </Illustration>
           <h3>{t('step3', 'Build')}</h3>
           <p>{t('step3d', 'Design, develop, and review together.')}</p>
         </div>
         <div className="step">
-          <span
+          <Illustration
             className="step-art"
-            aria-hidden="true"
+            asset="process-improve"
           >
             <svg
               aria-hidden="true"
@@ -880,11 +869,7 @@ export function Process() {
                 fill="#ae35f1"
               ></circle>
             </svg>
-            <span
-              className="lottie-stage"
-              aria-hidden="true"
-            />
-          </span>
+          </Illustration>
           <h3>{t('step4', 'Improve')}</h3>
           <p>{t('step4d', 'Learn from feedback and iterate.')}</p>
         </div>

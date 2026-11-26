@@ -12,6 +12,8 @@ Run `npm test -- --runInBand` for the existing tests and the preview's translati
 
 English and Portuguese copy is held in `src/components/preview/Locale.tsx` and `portuguese.js`. The default English copy is colocated with its components. The decorative SVG and Lottie artwork is hidden from assistive technology; reduced motion, failed animation loading, and disabled JavaScript retain the static SVG artwork. Motion pauses offscreen and when the page is hidden.
 
+The `Illustration` component associates each SVG with its Lottie asset and handles viewport, visibility and reduced-motion preferences. It lazy-loads `LottiePlayer`, which uses `lottie-react`'s light SVG renderer. Animation downloads are cancelled when the player unmounts, and the original SVG stays visible if the player or data cannot load. The hero has a separate motion controller.
+
 This branch reproduces the studio preview. Unlike the previous production page, the preview does not currently include the prior cookie banner or Google Analytics integration. Those need a separate product decision and implementation before replacing production. The form endpoint is controlled by the existing environment configuration.
 
 ## Styles

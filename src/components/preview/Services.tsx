@@ -1,3 +1,4 @@
+import { Illustration } from './Illustration'
 import { useLocale } from './Locale'
 export function Services() {
   const { t, locale, setLocale } = useLocale()
@@ -18,9 +19,9 @@ export function Services() {
       </div>
       <div>
         <div className="service service-1">
-          <span
+          <Illustration
             className="service-art"
-            aria-hidden="true"
+            asset="launch-prototype"
           >
             <svg
               className="service-illustration"
@@ -302,11 +303,7 @@ export function Services() {
                 ></circle>
               </g>
             </svg>
-            <span
-              className="lottie-stage"
-              aria-hidden="true"
-            />
-          </span>
+          </Illustration>
           <h3>{t('service1', 'Launch and grow')}</h3>
           <p>
             {t(
@@ -316,9 +313,9 @@ export function Services() {
           </p>
         </div>
         <div className="service service-2">
-          <span
+          <Illustration
             className="service-art"
-            aria-hidden="true"
+            asset="service-build"
           >
             <svg
               className="service-illustration"
@@ -613,11 +610,7 @@ export function Services() {
                 ></path>
               </g>
             </svg>
-            <span
-              className="lottie-stage"
-              aria-hidden="true"
-            />
-          </span>
+          </Illustration>
           <h3>{t('service2', 'Build and evolve')}</h3>
           <p>
             {t(
@@ -627,9 +620,9 @@ export function Services() {
           </p>
         </div>
         <div className="service service-3">
-          <span
+          <Illustration
             className="service-art"
-            aria-hidden="true"
+            asset="service-learn"
           >
             <svg
               className="service-illustration"
@@ -887,11 +880,7 @@ export function Services() {
                 ></circle>
               </g>
             </svg>
-            <span
-              className="lottie-stage"
-              aria-hidden="true"
-            />
-          </span>
+          </Illustration>
           <h3>{t('service3', 'Learn and improve')}</h3>
           <p>
             {t(
