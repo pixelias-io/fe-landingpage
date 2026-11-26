@@ -8,7 +8,7 @@ import PreviewPage from './PreviewPage'
 
 jest.mock('next/document', () => ({
   Html: ({ children, lang }: { children: React.ReactNode; lang: string }) => <html lang={lang}>{children}</html>,
-  Head: () => <head />,
+  Head: ({ children }: { children: React.ReactNode }) => <head>{children}</head>,
   Main: () => <main id="next-content" />,
   NextScript: () => <script id="next-scripts" />
 }))
@@ -31,4 +31,9 @@ test('the document has an English baseline and no-JavaScript fallback hook', () 
   expect(html).toContain('<body class="no-js">')
   expect(html).toContain('id="next-content"')
   expect(html).toContain('id="next-scripts"')
+})
+
+test('the document links to the Pixelias favicon', () => {
+  const html = renderToStaticMarkup(<Document />)
+  expect(html).toContain('<link rel="icon" href="/favicon.ico?v=1" sizes="any"/>')
 })
