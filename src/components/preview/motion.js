@@ -161,7 +161,7 @@ function mountHero() {
     art.classList.remove('motion-running')
   }
   function sync() {
-    if (inView && !reduce.matches && !document.hidden && !document.documentElement.hasAttribute('data-motion-paused')) {
+    if (inView && !reduce.matches && !document.hidden) {
       if (!frame) {
         last = 0
         art.classList.add('motion-running')
@@ -175,7 +175,7 @@ function mountHero() {
     }
   }
   const onPointerMove = (e) => {
-    if (!fine.matches || reduce.matches || document.documentElement.hasAttribute('data-motion-paused')) return
+    if (!fine.matches || reduce.matches) return
     const r = art.getBoundingClientRect()
     targetX = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width) * 2 - 1))
     targetY = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height) * 2 - 1))
@@ -188,13 +188,11 @@ function mountHero() {
   art.addEventListener('pointerleave', onPointerLeave, { passive: true })
   animated.forEach((e) => observer.observe(e))
   document.addEventListener('visibilitychange', sync)
-  document.addEventListener('pixelias-motion-change', sync)
   reduce.addEventListener('change', sync)
 
   return () => {
     observer.disconnect()
     document.removeEventListener('visibilitychange', sync)
-    document.removeEventListener('pixelias-motion-change', sync)
     reduce.removeEventListener('change', sync)
     art.removeEventListener('pointermove', onPointerMove)
     art.removeEventListener('pointerleave', onPointerLeave)

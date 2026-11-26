@@ -224,36 +224,6 @@
   }
 }
 
-/* The visitor can pause decorative motion without changing system settings. */
-html[data-motion-paused] {
-  scroll-behavior: auto;
-}
-[data-motion-paused] *,
-[data-motion-paused] *::before,
-[data-motion-paused] *::after {
-  animation-play-state: paused !important;
-  transition: none !important;
-}
-/* Entrance effects should not leave newly revealed content half-transparent. */
-[data-motion-paused]
-  :is(
-    .hero h1,
-    .hero-lead,
-    .hero-descriptor,
-    .actions,
-    #services.visible > div:first-child,
-    #services.visible .service h3,
-    #services.visible .service p,
-    #experience.visible .brand-grid img,
-    #experience.visible > .split,
-    #process.visible > .split,
-    #process.visible .step-art > svg,
-    .founder.visible .portrait,
-    .founder.visible > div:last-child
-  ) {
-  animation: none !important;
-}
-
 /* Keep illustrations still when the browser cannot report motion preferences. */
 [data-motion-unavailable] *,
 [data-motion-unavailable] *::before,
@@ -262,10 +232,7 @@ html[data-motion-paused] {
   transition: none !important;
 }
 
-/* Without JavaScript the control cannot work, so show still artwork instead. */
-.no-js .motion-control {
-  display: none;
-}
+/* Without JavaScript, keep the fallback artwork still. */
 .no-js *,
 .no-js *::before,
 .no-js *::after {

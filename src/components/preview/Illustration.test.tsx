@@ -106,33 +106,6 @@ test('pauses when the document is hidden and resumes when visible', async () => 
   else delete (document as { hidden?: boolean }).hidden
 })
 
-test('the page motion control pauses and resumes a loaded illustration', async () => {
-  const { MotionProvider, useMotion } = require('./MotionPreference')
-  function Control() {
-    const { paused, toggle } = useMotion()
-    return <button onClick={toggle}>{paused ? 'Resume motion' : 'Pause motion'}</button>
-  }
-  render(
-    <MotionProvider>
-      <Control />
-      <Illustration
-        asset="service-build"
-        className="service-art"
-      >
-        <svg />
-      </Illustration>
-    </MotionProvider>
-  )
-  act(() => intersect(true))
-  await waitFor(() => expect(screen.getByTestId('player')).toHaveAttribute('data-active', 'true'))
-  act(() => screen.getByRole('button', { name: 'Pause motion' }).click())
-  expect(screen.getByTestId('player')).toHaveAttribute('data-active', 'false')
-  expect(document.documentElement).toHaveAttribute('data-motion-paused')
-  act(() => screen.getByRole('button', { name: 'Resume motion' }).click())
-  expect(screen.getByTestId('player')).toHaveAttribute('data-active', 'true')
-  expect(document.documentElement).not.toHaveAttribute('data-motion-paused')
-})
-
 test('does not initialize an illustration when intersection observation is unavailable', () => {
   Object.defineProperty(window, 'IntersectionObserver', { configurable: true, value: undefined })
   // Removing the property entirely matches browsers without the API.

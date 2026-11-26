@@ -1,6 +1,5 @@
 import { fireEvent, render, screen, within } from '@testing-library/react'
 import { LocaleProvider } from './Locale'
-import { MotionProvider } from './MotionPreference'
 import { Header } from './Header'
 import { Hero } from './Hero'
 import { Services } from './Services'
@@ -23,15 +22,11 @@ jest.mock('./Illustration', () => ({
   )
 }))
 function renderWithPreferences(node: ReactNode) {
-  return render(
-    <LocaleProvider>
-      <MotionProvider>{node}</MotionProvider>
-    </LocaleProvider>
-  )
+  return render(<LocaleProvider>{node}</LocaleProvider>)
 }
 
 describe('Header and locale', () => {
-  test('links to the page sections and switches language and motion controls', () => {
+  test('links to the page sections and switches language', () => {
     renderWithPreferences(
       <>
         <Header />
@@ -52,11 +47,9 @@ describe('Header and locale', () => {
     expect(screen.getByRole('button', { name: 'PT' })).toHaveAttribute('aria-pressed', 'true')
     expect(screen.getByRole('navigation', { name: 'Navegação principal' })).toBeInTheDocument()
     expect(screen.getByRole('img', { name: 'Matheus Moreira, fundador da Pixelias' })).toBeInTheDocument()
-    fireEvent.click(screen.getByRole('button', { name: 'Pausar animações' }))
-    expect(screen.getByRole('button', { name: 'Retomar animações' })).toBeInTheDocument()
     fireEvent.click(screen.getByRole('button', { name: 'EN' }))
     expect(document.documentElement).toHaveAttribute('lang', 'en')
-    expect(screen.getByRole('button', { name: 'Resume motion' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /pause motion|resume motion/i })).not.toBeInTheDocument()
   })
 })
 

@@ -1,8 +1,6 @@
 import { useLocale } from './Locale'
-import { useMotion } from './MotionPreference'
 export function Header() {
   const { t, locale, setLocale } = useLocale()
-  const { paused, toggle } = useMotion()
 
   return (
     <header>
@@ -22,19 +20,6 @@ export function Header() {
             <a href="#process">{t('navProcess', 'How we work')}</a>
             <a href="#about">{t('navAbout', 'About')}</a>
             <a href="#contact">{t('navContact', 'Contact')}</a>
-            <button
-              type="button"
-              className="motion-control"
-              onClick={toggle}
-            >
-              {locale === 'pt' ?
-                paused ?
-                  'Retomar animações'
-                : 'Pausar animações'
-              : paused ?
-                'Resume motion'
-              : 'Pause motion'}
-            </button>
             <div
               className="lang"
               aria-label={locale === 'pt' ? 'Idioma' : 'Language'}
