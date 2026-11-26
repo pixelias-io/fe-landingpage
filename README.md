@@ -10,9 +10,9 @@ Run `npm test -- --runInBand` for the existing tests and the preview's translati
 
 ## Preview behavior
 
-English and Portuguese copy is held in `src/components/preview/Locale.tsx` and `portuguese.js`. The default English copy is colocated with its components. The decorative SVG and Lottie artwork is hidden from assistive technology; reduced motion, failed animation loading, and disabled JavaScript retain the static SVG artwork. Motion pauses offscreen and when the page is hidden.
+English and Portuguese copy is held in `src/components/preview/Locale.tsx` and `portuguese.js`. The default English copy is colocated with its components. The decorative SVG and Lottie artwork is hidden from assistive technology; reduced motion, failed animation loading, and disabled JavaScript retain the static SVG artwork. Motion pauses offscreen and when the page is hidden. The header provides a bilingual pause/resume control for the hero, illustrations and ambient motion; the system reduced-motion preference remains independent. When JavaScript or motion preference detection is unavailable, the artwork remains still.
 
-The `Illustration` component associates each SVG with its Lottie asset and handles viewport, visibility and reduced-motion preferences. It lazy-loads `LottiePlayer`, which uses `lottie-react`'s light SVG renderer. Animation downloads are cancelled when the player unmounts, and the original SVG stays visible if the player or data cannot load. The hero has a separate motion controller.
+The `Illustration` component associates each SVG with its Lottie asset and handles viewport, visibility and reduced-motion preferences. It lazy-loads `LottiePlayer`, which uses `lottie-react`'s light SVG renderer. Animation downloads are cancelled when the player unmounts, and the original SVG stays visible if the player or data cannot load. The hero has a separate motion controller. Lottie dependency licenses are included in `public/third-party-notices`.
 
 This branch reproduces the studio preview. Unlike the previous production page, the preview does not currently include the prior cookie banner or Google Analytics integration. Those need a separate product decision and implementation before replacing production. The form endpoint is controlled by the existing environment configuration.
 

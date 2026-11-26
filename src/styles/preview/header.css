@@ -125,3 +125,36 @@ nav {
     margin-left: 0;
   }
 }
+
+.motion-control {
+  background: none;
+  border: 1px solid #7c9ac3;
+  border-radius: 6px;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 7px 10px;
+  white-space: nowrap;
+}
+.motion-control:hover {
+  background: #e4eaf8;
+}
+@media (max-width: 700px) {
+  .motion-control {
+    min-height: 44px;
+  }
+}
+
+/* Give the navigation and motion control room at tablet widths. */
+@media (min-width: 701px) and (max-width: 900px) {
+  nav {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px 0;
+  }
+  .links {
+    flex-wrap: wrap;
+  }
+}

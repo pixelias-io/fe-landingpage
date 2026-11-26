@@ -33,18 +33,20 @@ export function Contact() {
           ref={formRef}
         >
           <div className="formgrid">
-            <label>
-              <span>{t('name', 'Name')}</span>
-              {' *'}
-              <input
-                name="name"
-                autoComplete="name"
-                required={true}
-                aria-describedby="name-error"
-                onBlur={handleBlur}
-                onInput={handleInput}
-                aria-invalid={Boolean(errors.name)}
-              />
+            <div className="form-field">
+              <label>
+                <span>{t('name', 'Name')}</span>
+                {' *'}
+                <input
+                  name="name"
+                  autoComplete="name"
+                  required={true}
+                  aria-describedby="name-error"
+                  onBlur={handleBlur}
+                  onInput={handleInput}
+                  aria-invalid={Boolean(errors.name)}
+                />
+              </label>
               <span
                 className="field-error"
                 id="name-error"
@@ -52,7 +54,7 @@ export function Contact() {
               >
                 {errors.name || ''}
               </span>
-            </label>
+            </div>
             <label>
               <span>{t('company', 'Company (optional)')}</span>
               <input
@@ -60,19 +62,21 @@ export function Contact() {
                 autoComplete="organization"
               />
             </label>
-            <label className="full">
-              <span>{t('email', 'Email')}</span>
-              {' *'}
-              <input
-                type="email"
-                name="email"
-                autoComplete="email"
-                required={true}
-                aria-describedby="email-error"
-                onBlur={handleBlur}
-                onInput={handleInput}
-                aria-invalid={Boolean(errors.email)}
-              />
+            <div className="form-field full">
+              <label>
+                <span>{t('email', 'Email')}</span>
+                {' *'}
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  required={true}
+                  aria-describedby="email-error"
+                  onBlur={handleBlur}
+                  onInput={handleInput}
+                  aria-invalid={Boolean(errors.email)}
+                />
+              </label>
               <span
                 className="field-error"
                 id="email-error"
@@ -80,18 +84,20 @@ export function Contact() {
               >
                 {errors.email || ''}
               </span>
-            </label>
-            <label className="full">
-              <span>{t('message', 'Project details')}</span>
-              {' *'}
-              <textarea
-                name="message"
-                required={true}
-                aria-describedby="message-hint message-error"
-                onBlur={handleBlur}
-                onInput={handleInput}
-                aria-invalid={Boolean(errors.message)}
-              ></textarea>
+            </div>
+            <div className="form-field full">
+              <label>
+                <span>{t('message', 'Project details')}</span>
+                {' *'}
+                <textarea
+                  name="message"
+                  required={true}
+                  aria-describedby="message-hint message-error"
+                  onBlur={handleBlur}
+                  onInput={handleInput}
+                  aria-invalid={Boolean(errors.message)}
+                ></textarea>
+              </label>
               <span
                 className="field-error"
                 id="message-error"
@@ -102,7 +108,7 @@ export function Contact() {
               <small id="message-hint">
                 {t('messageHint', 'What are you building or improving, and where could you use support?')}
               </small>
-            </label>
+            </div>
           </div>
           <button
             className="btn formbtn"

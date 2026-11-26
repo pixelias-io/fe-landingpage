@@ -1,6 +1,6 @@
 /* Hero choreography and section reveal behavior. */
 function mountHero() {
-  if (!('IntersectionObserver' in window)) return () => {}
+  if (!('IntersectionObserver' in window) || !window.matchMedia) return () => {}
   const art = document.querySelector('.art')
   const svg = art.querySelector('.hero-illustration')
   const warm = svg.querySelector('.hero-system-warm'),
@@ -161,7 +161,7 @@ function mountHero() {
     art.classList.remove('motion-running')
   }
   function sync() {
-    if (inView && !reduce.matches && !document.hidden) {
+    if (inView && !reduce.matches && !document.hidden && !document.documentElement.hasAttribute('data-motion-paused')) {
       if (!frame) {
         last = 0
         art.classList.add('motion-running')
@@ -175,7 +175,7 @@ function mountHero() {
     }
   }
   const onPointerMove = (e) => {
-    if (!fine.matches || reduce.matches) return
+    if (!fine.matches || reduce.matches || document.documentElement.hasAttribute('data-motion-paused')) return
     const r = art.getBoundingClientRect()
     targetX = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width) * 2 - 1))
     targetY = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height) * 2 - 1))
@@ -188,11 +188,13 @@ function mountHero() {
   art.addEventListener('pointerleave', onPointerLeave, { passive: true })
   animated.forEach((e) => observer.observe(e))
   document.addEventListener('visibilitychange', sync)
+  document.addEventListener('pixelias-motion-change', sync)
   reduce.addEventListener('change', sync)
 
   return () => {
     observer.disconnect()
     document.removeEventListener('visibilitychange', sync)
+    document.removeEventListener('pixelias-motion-change', sync)
     reduce.removeEventListener('change', sync)
     art.removeEventListener('pointermove', onPointerMove)
     art.removeEventListener('pointerleave', onPointerLeave)
@@ -201,6 +203,8 @@ function mountHero() {
 }
 export function mountMotion() {
   document.body.classList.remove('no-js')
+  const motionUnavailable = !window.matchMedia
+  if (motionUnavailable) document.documentElement.setAttribute('data-motion-unavailable', '')
   let observer
   if ('IntersectionObserver' in window) {
     observer = new IntersectionObserver(
@@ -218,6 +222,7 @@ export function mountMotion() {
   const stopHero = mountHero()
   return () => {
     if (observer) observer.disconnect()
+    if (motionUnavailable) document.documentElement.removeAttribute('data-motion-unavailable')
     stopHero()
   }
 }

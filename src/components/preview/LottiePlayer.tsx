@@ -58,7 +58,10 @@ function LoadedAnimation({
   // cleanup removes this additional renderer-error listener before that happens.
   useLayoutEffect(() => {
     if (!animationItem) return
-    const onError = () => setRenderFailed(true)
+    const onError = () => {
+      animationItem.pause()
+      setRenderFailed(true)
+    }
     animationItem.addEventListener('error', onError)
     return () => animationItem.removeEventListener('error', onError)
   }, [animationItem])

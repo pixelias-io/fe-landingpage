@@ -10,6 +10,7 @@ import { About } from './About'
 import { Contact } from './Contact'
 import { Footer } from './Footer'
 import { mountMotion } from './motion'
+import { MotionProvider } from './MotionPreference'
 function Content() {
   const { locale } = useLocale()
   useEffect(() => mountMotion(), [])
@@ -80,7 +81,9 @@ function Content() {
 export default function PreviewPage() {
   return (
     <LocaleProvider>
-      <Content />
+      <MotionProvider>
+        <Content />
+      </MotionProvider>
     </LocaleProvider>
   )
 }

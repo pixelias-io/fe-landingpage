@@ -1,4 +1,5 @@
 import { Component, lazy, ReactNode, Suspense, useCallback, useEffect, useRef, useState } from 'react'
+import { useMotion } from './MotionPreference'
 
 const LottiePlayer = lazy(() => import('./LottiePlayer'))
 
@@ -27,6 +28,7 @@ class AnimationBoundary extends Component<{ children: ReactNode; onFailure: () =
 }
 
 export function Illustration({ asset, className, children }: Props) {
+  const { paused } = useMotion()
   const artRef = useRef<HTMLSpanElement>(null)
   const [nearViewport, setNearViewport] = useState(false)
   // Start with the static SVG for server rendering and until the preference is known.
@@ -65,7 +67,7 @@ export function Illustration({ asset, className, children }: Props) {
     }
   }, [])
 
-  const active = nearViewport && !reducedMotion && !pageHidden
+  const active = nearViewport && !reducedMotion && !pageHidden && !paused
   useEffect(() => {
     if (active) setShouldLoad(true)
   }, [active])

@@ -120,7 +120,7 @@ label {
   font-size: 14px;
   color: var(--ink);
 }
-label.full {
+.form-field.full {
   grid-column: 1/-1;
 }
 .formbtn {
@@ -133,7 +133,7 @@ label.full {
   .formgrid {
     grid-template-columns: 1fr;
   }
-  label.full {
+  .form-field.full {
     grid-column: auto;
   }
 }
@@ -212,7 +212,7 @@ textarea {
   .formgrid {
     grid-template-columns: 1fr 1fr;
   }
-  label.full {
+  .form-field.full {
     grid-column: 1/-1;
   }
 }
@@ -220,7 +220,7 @@ textarea {
   .formgrid {
     grid-template-columns: 1fr;
   }
-  label.full {
+  .form-field.full {
     grid-column: auto;
   }
   .actions {
