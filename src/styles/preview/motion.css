@@ -252,3 +252,9 @@
   .trend-arrow { animation: trend-float 7s ease-in-out infinite alternate; }
   @keyframes trend-float { from { transform: translateY(1px); } to { transform: translateY(-2px); } }
 }
+
+/* Reveal the headline once; the default is visible without motion. */
+@media (prefers-reduced-motion: no-preference) {
+  body:not(.no-js) .hero h1 { animation: headline-fade-in 900ms ease-out both; }
+  @keyframes headline-fade-in { from { opacity: 0; } to { opacity: 1; } }
+}
