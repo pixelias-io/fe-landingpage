@@ -247,3 +247,9 @@
   .growth-bar-4 { animation-delay: -3.6s; }
   @keyframes growth-drift { from { transform: translateY(1px); } to { transform: translateY(-2px); } }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .trend-arrow { animation: trend-float 7s ease-in-out infinite alternate; }
+  .trend-shadow { animation: trend-float 9s ease-in-out -3s infinite alternate-reverse; }
+  @keyframes trend-float { from { transform: translateY(1px); } to { transform: translateY(-2px); } }
+}
