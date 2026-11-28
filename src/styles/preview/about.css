@@ -109,3 +109,36 @@
     transform: none;
   }
 }
+
+/* Crossfade both gradients together so the founder pixels exchange colors. */
+@media (prefers-reduced-motion: no-preference) {
+  body:not(.no-js) .founder-accent i { background: none; }
+  body:not(.no-js) .founder-accent i::before,
+  body:not(.no-js) .founder-accent i::after {
+    content: ''; position: absolute; inset: 0;
+  }
+  body:not(.no-js) .founder-accent i:first-child::before,
+  body:not(.no-js) .founder-accent i:last-child::after {
+    background: linear-gradient(135deg, #ffbc9cbf, #ffa5c4ae);
+  }
+  body:not(.no-js) .founder-accent i:first-child::after,
+  body:not(.no-js) .founder-accent i:last-child::before {
+    background: linear-gradient(135deg, #fcb2eecc, #ec6ff3b8);
+  }
+  body:not(.no-js) .founder-accent i::before {
+    opacity: 1; animation: founder-color-original 8s ease-in-out infinite;
+  }
+  body:not(.no-js) .founder-accent i::after {
+    opacity: 0; animation: founder-color-exchanged 8s ease-in-out infinite;
+  }
+  body:not(.no-js) .motion-offscreen .founder-accent i::before,
+  body:not(.no-js) .motion-offscreen .founder-accent i::after { animation-play-state: paused; }
+  @keyframes founder-color-original {
+    0%, 15%, 90%, 100% { opacity: 1; }
+    45%, 60% { opacity: 0; }
+  }
+  @keyframes founder-color-exchanged {
+    0%, 15%, 90%, 100% { opacity: 0; }
+    45%, 60% { opacity: 1; }
+  }
+}
