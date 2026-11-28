@@ -14,12 +14,12 @@
   gap: 20px;
 }
 .hero h1 {
-  margin: 0 0 27px;
+  margin: 0 0 32px;
   max-width: 650px;
-  font-weight: 400;
+  font-weight: 500;
   font-size: clamp(42px, 4.35vw, 60px);
   letter-spacing: -0.045em;
-  line-height: 1.07;
+  line-height: 1.1;
 }
 .hero p.hero-lead {
   max-width: 570px;
@@ -209,7 +209,7 @@
 @media (max-width: 700px) {
   .hero h1 {
     font-size: clamp(39px, 9.8vw, 58px);
-    line-height: 1.08;
+    line-height: 1.1;
   }
   .hero p.hero-lead {
     font-size: 17px;
