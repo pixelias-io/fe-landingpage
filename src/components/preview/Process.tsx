@@ -812,31 +812,31 @@ export function Process() {
               ></ellipse>
               {'\n '}
               <path
-                className="ambient-plane"
+                className="ambient-plane improve-plane improve-plane-1"
                 d="M24 47 52 55 52 94 24 85Z"
                 fill="url(#ref-improve-warm)"
               ></path>
               {'\n '}
               <path
-                className="ambient-plane"
+                className="ambient-plane improve-plane improve-plane-2"
                 d="M42 38 69 45 69 83 42 75Z"
                 fill="url(#ref-improve-pink)"
               ></path>
               {'\n '}
               <path
-                className="ambient-plane"
+                className="ambient-plane improve-plane improve-plane-3"
                 d="M60 29 86 36 86 72 60 65Z"
                 fill="url(#ref-improve-pink)"
               ></path>
               {'\n '}
               <path
-                className="ambient-plane"
+                className="ambient-plane improve-plane improve-plane-4"
                 d="M78 20 102 27 102 62 78 55Z"
                 fill="url(#ref-improve-cool)"
               ></path>
               {'\n '}
               <path
-                className="ambient-plane"
+                className="ambient-plane improve-plane improve-plane-5"
                 d="M95 12 119 18 119 51 95 45Z"
                 fill="url(#ref-improve-cool)"
                 opacity=".66"
