@@ -64,7 +64,6 @@
   }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .hero h1,
   .hero-lead,
   .hero-descriptor {
     animation: copy-in var(--motion-reveal) var(--motion-ease) both;
