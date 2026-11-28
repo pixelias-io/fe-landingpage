@@ -83,7 +83,6 @@
 .contact-accent i {
   display: block;
   position: absolute;
-  animation: none !important;
 }
 .contact-accent i:first-child {
   left: 0;
@@ -154,5 +153,26 @@
   .contact-accent {
     animation: none;
     transform: none;
+  }
+}
+
+/* The two pixels meet at the same corner while exchanging sizes. */
+@media (prefers-reduced-motion: no-preference) {
+  body:not(.no-js) .contact-accent i:first-child {
+    transform-origin: left bottom;
+    animation: contact-pixel-grow 7s ease-in-out infinite;
+  }
+  body:not(.no-js) .contact-accent i:last-child {
+    transform-origin: right top;
+    animation: contact-pixel-shrink 7s ease-in-out infinite;
+  }
+  .motion-offscreen .contact-accent i { animation-play-state: paused; }
+  @keyframes contact-pixel-grow {
+    0%, 15%, 90%, 100% { transform: scale(1); }
+    45%, 60% { transform: scale(1.7272727); }
+  }
+  @keyframes contact-pixel-shrink {
+    0%, 15%, 90%, 100% { transform: scale(1); }
+    45%, 60% { transform: scale(.5789474); }
   }
 }

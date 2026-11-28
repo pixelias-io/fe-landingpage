@@ -10,7 +10,7 @@ export default function LottiePlayer({ asset, active, onReady }: Props) {
 
   useEffect(() => {
     const controller = new AbortController()
-    const version = asset === 'service-learn' ? 7 : asset === 'launch-prototype' ? 5 : asset.startsWith('process-') ? 2 : 4
+    const version = asset === 'process-improve' ? 3 : asset === 'service-learn' ? 7 : asset === 'launch-prototype' ? 5 : asset.startsWith('process-') ? 2 : 4
     fetch(`/preview/assets/lottie/${asset}.json?v=${version}`, { signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error('Animation unavailable')

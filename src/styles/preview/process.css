@@ -171,3 +171,21 @@
 
 @media (max-width: 360px) { .process { grid-template-columns: 1fr; } }
 .step p { overflow-wrap: anywhere; }
+
+/* Fold the five Improve planes towards their center, then reopen. */
+@media (prefers-reduced-motion: no-preference) {
+  body:not(.no-js) .step:nth-child(4) svg .improve-plane {
+    animation: improve-accordion 8s ease-in-out infinite;
+  }
+  .improve-plane-1 { --fold-x: 12px; --fold-y: -6px; }
+  .improve-plane-2 { --fold-x: 6px; --fold-y: -3px; }
+  .improve-plane-3 { --fold-x: 0px; --fold-y: 0px; }
+  .improve-plane-4 { --fold-x: -6px; --fold-y: 3px; }
+  .improve-plane-5 { --fold-x: -12px; --fold-y: 6px; }
+  body:not(.no-js) .motion-offscreen .step:nth-child(4) svg .improve-plane { animation-play-state: paused; }
+  @keyframes improve-accordion {
+    0%, 100% { transform: translate(0, 0); }
+    42%, 58% { transform: translate(var(--fold-x), var(--fold-y)); }
+  }
+}
+.no-js .step:nth-child(4) svg .improve-plane { animation: none !important; }
