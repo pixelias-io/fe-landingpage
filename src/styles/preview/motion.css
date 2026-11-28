@@ -239,3 +239,11 @@
   animation: none !important;
   transition: none !important;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .growth-bar { animation: growth-drift 6s ease-in-out infinite alternate; }
+  .growth-bar-2 { animation-delay: -1.2s; }
+  .growth-bar-3 { animation-delay: -2.4s; }
+  .growth-bar-4 { animation-delay: -3.6s; }
+  @keyframes growth-drift { from { transform: translateY(1px); } to { transform: translateY(-2px); } }
+}

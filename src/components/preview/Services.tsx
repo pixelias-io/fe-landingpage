@@ -23,286 +23,43 @@ export function Services() {
             className="service-art"
             asset="launch-prototype"
           >
-            <svg
-              className="service-illustration"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 140 100"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <defs>
-                {'\n '}
-                <linearGradient
-                  id="anim-launch-warm"
-                  x1="0"
-                  y1="0"
-                  x2="1"
-                  y2="1"
-                >
-                  <stop
-                    stopColor="#ffe2a3"
-                    stopOpacity=".96"
-                  ></stop>
-                  <stop
-                    offset=".38"
-                    stopColor="#ffa83e"
-                    stopOpacity=".88"
-                  ></stop>
-                  <stop
-                    offset="1"
-                    stopColor="#ff8498"
-                    stopOpacity=".49"
-                  ></stop>
-                </linearGradient>
-                {'\n '}
-                <linearGradient
-                  id="anim-launch-pink"
-                  x1="0"
-                  y1="0"
-                  x2="1"
-                  y2="1"
-                >
-                  <stop
-                    stopColor="#ffc0a0"
-                    stopOpacity=".88"
-                  ></stop>
-                  <stop
-                    offset=".47"
-                    stopColor="#f768b5"
-                    stopOpacity=".78"
-                  ></stop>
-                  <stop
-                    offset="1"
-                    stopColor="#d16be8"
-                    stopOpacity=".48"
-                  ></stop>
-                </linearGradient>
-                {'\n '}
-                <linearGradient
-                  id="anim-launch-cool"
-                  x1="0"
-                  y1="0"
-                  x2="1"
-                  y2="1"
-                >
-                  <stop
-                    stopColor="#dec6ff"
-                    stopOpacity=".82"
-                  ></stop>
-                  <stop
-                    offset=".55"
-                    stopColor="#a482f4"
-                    stopOpacity=".7"
-                  ></stop>
-                  <stop
-                    offset="1"
-                    stopColor="#82a2ff"
-                    stopOpacity=".46"
-                  ></stop>
-                </linearGradient>
-                {'\n '}
-                <linearGradient id="anim-launch-line">
-                  <stop stopColor="#ffb657"></stop>
-                  <stop
-                    offset=".52"
-                    stopColor="#eb82ce"
-                  ></stop>
-                  <stop
-                    offset="1"
-                    stopColor="#9d9df6"
-                  ></stop>
-                </linearGradient>
-                {'\n '}
-                <radialGradient
-                  id="anim-launch-sheen"
-                  cx="40%"
-                  cy="22%"
-                  r="85%"
-                >
-                  <stop
-                    stopColor="#fff8ec"
-                    stopOpacity=".7"
-                  ></stop>
-                  <stop
-                    offset=".35"
-                    stopColor="#fff1f2"
-                    stopOpacity=".24"
-                  ></stop>
-                  <stop
-                    offset="1"
-                    stopColor="#fff"
-                    stopOpacity="0"
-                  ></stop>
-                </radialGradient>
-                {'\n '}
-                <radialGradient id="anim-launch-glint">
-                  <stop
-                    stopColor="#fffdf2"
-                    stopOpacity=".8"
-                  ></stop>
-                  <stop
-                    offset=".3"
-                    stopColor="#fff2e8"
-                    stopOpacity=".3"
-                  ></stop>
-                  <stop
-                    offset="1"
-                    stopColor="#fff"
-                    stopOpacity="0"
-                  ></stop>
-                </radialGradient>
-                {'\n '}
-                <filter
-                  id="anim-launch-ambient"
-                  x="-100%"
-                  y="-150%"
-                  width="300%"
-                  height="400%"
-                >
-                  <feGaussianBlur stdDeviation="6"></feGaussianBlur>
-                </filter>
-              </defs>
-              <ellipse
-                cx="70"
-                cy="64"
-                rx="50"
-                ry="20"
-                fill="#e9a5df"
-                opacity=".27"
-                filter="url(#anim-launch-ambient)"
-              ></ellipse>
-              {'\n '}
-              <g className="service-part launch-back">
-                <path
-                  d="M20 88 C29 76 28 57 29 47 Q29 40 36 37 L111 10 Q121 7 119 18 C113 54 78 80 20 88Z"
-                  fill="url(#anim-launch-cool)"
-                  stroke="url(#anim-launch-line)"
-                  strokeWidth="1"
-                  strokeOpacity=".7"
-                ></path>
-                <path
-                  d="M20 88 C29 76 28 57 29 47 Q29 40 36 37 L111 10 Q121 7 119 18 C113 54 78 80 20 88Z"
-                  fill="url(#anim-launch-sheen)"
-                ></path>
-                <path
-                  d="M30 47 Q30 42 36 39 L110 12 Q118 9 117 18 C108 42 85 58 63 69 C76 52 75 37 69 26 L36 39Z"
-                  fill="url(#anim-launch-pink)"
-                  opacity=".35"
-                ></path>
-                <path
-                  d="M25 77 Q28 62 35 53 L90 30 Q101 26 98 35 C88 52 64 69 25 77Z"
-                  fill="url(#anim-launch-warm)"
-                  opacity=".29"
-                ></path>
-                <path
-                  d="M32 51 C43 42 72 30 108 15"
-                  fill="none"
-                  stroke="#fff7ff"
-                  strokeWidth="1"
-                  opacity=".6"
-                ></path>
-                <path
-                  d="M28 79 C57 74 91 54 113 23"
-                  fill="none"
-                  stroke="#cbb8ff"
-                  strokeWidth="1"
-                  opacity=".55"
-                ></path>
-                <path
-                  d="M30 46 Q31 41 37 39 L109 12"
-                  fill="none"
-                  stroke="#fff6fb"
-                  strokeWidth=".75"
-                  opacity=".75"
-                ></path>
-              </g>
-              {'\n '}
-              <g className="service-part launch-middle">
-                <path
-                  d="M20 88 C27 76 25 66 25 60 Q25 54 32 51 L80 31 Q90 28 88 37 C80 61 52 82 20 88Z"
-                  fill="url(#anim-launch-pink)"
-                  stroke="url(#anim-launch-line)"
-                  strokeWidth=".9"
-                  strokeOpacity=".7"
-                ></path>
-                <path
-                  d="M20 88 C27 76 25 66 25 60 Q25 54 32 51 L80 31 Q90 28 88 37 C80 61 52 82 20 88Z"
-                  fill="url(#anim-launch-sheen)"
-                  opacity=".6"
-                ></path>
-                <path
-                  d="M26 61 Q26 56 32 53 L79 33 Q87 30 86 37 C82 51 68 64 54 72 C61 58 61 48 56 42 L32 53Z"
-                  fill="url(#anim-launch-warm)"
-                  opacity=".2"
-                ></path>
-                <path
-                  d="M26 83 C49 76 70 61 84 40"
-                  fill="none"
-                  stroke="#ffe0ea"
-                  strokeWidth=".9"
-                  opacity=".65"
-                ></path>
-                <path
-                  d="M27 60 Q28 56 33 54 L78 33"
-                  fill="none"
-                  stroke="#fff4eb"
-                  strokeWidth=".7"
-                  opacity=".7"
-                ></path>
-                <circle
-                  cx="51"
-                  cy="58"
-                  r="17"
-                  fill="url(#anim-launch-glint)"
-                  opacity=".7"
-                ></circle>
-              </g>
-              {'\n '}
-              <g className="service-part launch-front">
-                <path
-                  d="M20 88 C24 79 22 74 22 70 Q22 66 27 63 L52 53 Q62 50 60 57 C55 70 38 82 20 88Z"
-                  fill="url(#anim-launch-warm)"
-                  stroke="url(#anim-launch-line)"
-                  strokeWidth=".8"
-                  strokeOpacity=".7"
-                ></path>
-                <path
-                  d="M23 70 Q24 67 28 65 L51 55"
-                  fill="none"
-                  stroke="#fff7de"
-                  strokeWidth=".8"
-                  opacity=".75"
-                ></path>
-              </g>
-              {'\n '}
-              <g className="service-orbit">
-                <path
-                  d="M11 72 C21 54 35 44 50 41 C73 36 94 44 124 19"
-                  fill="none"
-                  stroke="url(#anim-launch-line)"
-                  strokeWidth=".9"
-                  opacity=".72"
-                ></path>
-                <circle
-                  cx="11"
-                  cy="72"
-                  r="2.6"
-                  fill="#ffa31e"
-                ></circle>
-                <circle
-                  cx="50"
-                  cy="41"
-                  r="2.3"
-                  fill="#ff8c39"
-                ></circle>
-                <circle
-                  cx="124"
-                  cy="19"
-                  r="2.6"
-                  fill="#cf40e8"
-                ></circle>
-              </g>
-            </svg>
+            <svg className="service-illustration" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 100" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="growth-warm" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#ffe2a3" stopOpacity=".95"/><stop offset=".48" stopColor="#ffa444" stopOpacity=".82"/><stop offset="1" stopColor="#ff7ca6" stopOpacity=".55"/></linearGradient>
+<linearGradient id="growth-pink" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#ffc7aa" stopOpacity=".92"/><stop offset=".5" stopColor="#f679bd" stopOpacity=".78"/><stop offset="1" stopColor="#c17def" stopOpacity=".55"/></linearGradient>
+<linearGradient id="growth-cool" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#e8ccff" stopOpacity=".88"/><stop offset=".52" stopColor="#b28af5" stopOpacity=".76"/><stop offset="1" stopColor="#83a2f8" stopOpacity=".55"/></linearGradient>
+<linearGradient id="growth-edge"><stop stopColor="#fff6db"/><stop offset=".5" stopColor="#ffc4e9"/><stop offset="1" stopColor="#dccfff"/></linearGradient>
+<radialGradient id="growth-light"><stop stopColor="#fff7ed" stopOpacity=".6"/><stop offset="1" stopColor="#fff" stopOpacity="0"/></radialGradient>
+</defs>
+<ellipse cx="70" cy="86" rx="58" ry="9" fill="#cb9df3" opacity=".15"/>
+<g className="service-part growth-bar growth-bar-1">
+<path d="M15 62 L22 58 L39 58 L32 62 Z" fill="url(#growth-light)" stroke="url(#growth-edge)" strokeWidth=".8"/>
+<path d="M32 62 L39 58 L39 81 L32 85 Z" fill="url(#growth-cool)" opacity=".7" stroke="url(#growth-edge)" strokeWidth=".7"/>
+<path d="M15 62 L32 62 L32 85 L15 85 Z" fill="url(#growth-warm)" stroke="url(#growth-edge)" strokeWidth=".85"/>
+<path d="M17 83 L17 65 L30 65" fill="none" stroke="#fff8f1" strokeWidth=".75" opacity=".7"/>
+<path d="M18 67 L23 67 L23 83 L18 83 Z" fill="url(#growth-light)" opacity=".4"/>
+</g>
+<g className="service-part growth-bar growth-bar-2">
+<path d="M40 50 L47 46 L64 46 L57 50 Z" fill="url(#growth-light)" stroke="url(#growth-edge)" strokeWidth=".8"/>
+<path d="M57 50 L64 46 L64 81 L57 85 Z" fill="url(#growth-cool)" opacity=".7" stroke="url(#growth-edge)" strokeWidth=".7"/>
+<path d="M40 50 L57 50 L57 85 L40 85 Z" fill="url(#growth-warm)" stroke="url(#growth-edge)" strokeWidth=".85"/>
+<path d="M42 83 L42 53 L55 53" fill="none" stroke="#fff8f1" strokeWidth=".75" opacity=".7"/>
+<path d="M43 55 L48 55 L48 83 L43 83 Z" fill="url(#growth-light)" opacity=".4"/>
+</g>
+<g className="service-part growth-bar growth-bar-3">
+<path d="M65 36 L72 32 L89 32 L82 36 Z" fill="url(#growth-light)" stroke="url(#growth-edge)" strokeWidth=".8"/>
+<path d="M82 36 L89 32 L89 81 L82 85 Z" fill="url(#growth-cool)" opacity=".7" stroke="url(#growth-edge)" strokeWidth=".7"/>
+<path d="M65 36 L82 36 L82 85 L65 85 Z" fill="url(#growth-pink)" stroke="url(#growth-edge)" strokeWidth=".85"/>
+<path d="M67 83 L67 39 L80 39" fill="none" stroke="#fff8f1" strokeWidth=".75" opacity=".7"/>
+<path d="M68 41 L73 41 L73 83 L68 83 Z" fill="url(#growth-light)" opacity=".4"/>
+</g>
+<g className="service-part growth-bar growth-bar-4">
+<path d="M90 19 L97 15 L114 15 L107 19 Z" fill="url(#growth-light)" stroke="url(#growth-edge)" strokeWidth=".8"/>
+<path d="M107 19 L114 15 L114 81 L107 85 Z" fill="url(#growth-cool)" opacity=".7" stroke="url(#growth-edge)" strokeWidth=".7"/>
+<path d="M90 19 L107 19 L107 85 L90 85 Z" fill="url(#growth-cool)" stroke="url(#growth-edge)" strokeWidth=".85"/>
+<path d="M92 83 L92 22 L105 22" fill="none" stroke="#fff8f1" strokeWidth=".75" opacity=".7"/>
+<path d="M93 24 L98 24 L98 83 L93 83 Z" fill="url(#growth-light)" opacity=".4"/>
+</g>
+</svg>
           </Illustration>
           <h3>{t('service1', 'Launch and grow')}</h3>
           <p>
