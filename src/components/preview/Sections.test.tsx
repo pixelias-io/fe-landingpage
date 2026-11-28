@@ -33,6 +33,8 @@ describe('Header and locale', () => {
         <About />
       </>
     )
+    expect(screen.getByRole('link', { name: 'Skip to main content' })).toHaveAttribute('href', '#top')
+    expect(screen.getByRole('group', { name: 'Language' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Pixelias' })).toHaveAttribute('href', '#top')
     for (const [name, target] of [
       ['What we do', '#services'],
@@ -43,6 +45,8 @@ describe('Header and locale', () => {
       expect(screen.getByRole('link', { name })).toHaveAttribute('href', target)
     }
     fireEvent.click(screen.getByRole('button', { name: 'PT' }))
+    expect(screen.getByRole('link', { name: 'Ir para o conteúdo principal' })).toHaveAttribute('href', '#top')
+    expect(screen.getByRole('group', { name: 'Idioma' })).toBeInTheDocument()
     expect(document.documentElement).toHaveAttribute('lang', 'pt')
     expect(screen.getByRole('button', { name: 'PT' })).toHaveAttribute('aria-pressed', 'true')
     expect(screen.getByRole('navigation', { name: 'Navegação principal' })).toBeInTheDocument()

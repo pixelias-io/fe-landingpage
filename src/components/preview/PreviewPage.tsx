@@ -65,7 +65,7 @@ function Content() {
         />
       </Head>
       <Header />
-      <main id="top">
+      <main id="top" tabIndex={-1}>
         <Hero />
         <Services />
         <Experience />
