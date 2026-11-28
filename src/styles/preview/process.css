@@ -28,8 +28,8 @@
 }
 .step p {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.42;
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--ink);
 }
 .step-art {
@@ -168,3 +168,6 @@
     transform: none !important;
   }
 }
+
+@media (max-width: 360px) { .process { grid-template-columns: 1fr; } }
+.step p { overflow-wrap: anywhere; }

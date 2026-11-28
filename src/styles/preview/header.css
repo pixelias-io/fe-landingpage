@@ -37,7 +37,7 @@ nav {
 
 .links a {
   text-decoration: none;
-  font-size: 0.94rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -100,7 +100,7 @@ nav {
 
   .links a,
   .lang button {
-    font-size: 14px;
+    font-size: 16px;
     min-width: 44px;
     min-height: 44px;
   }
@@ -125,3 +125,12 @@ nav {
     margin-left: 0;
   }
 }
+
+/* Make the skip link available to keyboard users without changing the layout. */
+.skip-link {
+  position: fixed; top: 12px; left: 12px; z-index: 100;
+  padding: 10px 16px; border-radius: 6px;
+  background: #102450; color: #fff;
+  transform: translateY(-160%);
+}
+.skip-link:focus { transform: translateY(0); }

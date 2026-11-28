@@ -1,4 +1,5 @@
 export const portuguese = {
+  skipContent: 'Ir para o conteúdo principal',
   navServices: 'O que fazemos',
   navProcess: 'Como trabalhamos',
   navAbout: 'Sobre',

@@ -17,7 +17,7 @@
 .service p {
   margin: 4px 0 0;
   max-width: 570px;
-  font-size: 16px;
+  font-size: 17px;
   color: var(--ink);
 }
 
@@ -172,4 +172,9 @@
     animation: none !important;
     transform: none !important;
   }
+}
+
+@media (max-width: 360px) {
+  .service h3 { grid-column: 1 / -1; grid-row: 2; }
+  .service p { grid-row: 3; }
 }

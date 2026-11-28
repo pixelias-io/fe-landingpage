@@ -19,7 +19,7 @@
 }
 body {
   margin: 0;
-  font-size: 16px;
+  font-size: 17px;
   color: var(--ink);
   background:
     radial-gradient(ellipse 38rem 27rem at 99% 0%, #f5c5edab, transparent 73%),
@@ -117,7 +117,7 @@ textarea:focus-visible {
 label {
   display: block;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--ink);
 }
 .form-field.full {
@@ -155,7 +155,7 @@ label {
   padding-bottom: 70px;
 }
 .intro {
-  font-size: 17px;
+  font-size: 18px;
   color: var(--ink);
   max-width: 350px;
   line-height: 1.45;
@@ -185,7 +185,7 @@ textarea {
 #message-hint {
   display: block;
   margin-top: 7px;
-  font-size: 13px;
+  font-size: 15px;
   color: #43577a;
 }
 .formbtn:hover {
@@ -300,3 +300,8 @@ textarea[aria-invalid='true'] {
     animation: service-assemble 13s ease-in-out -7s infinite alternate;
   }
 }
+
+/* Allow enlarged text to reflow without widening the page. */
+.hero > div { min-width: 0; }
+h1, h2, h3, p, .btn { overflow-wrap: anywhere; }
+.btn { max-width: 100%; }

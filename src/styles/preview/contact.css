@@ -19,14 +19,14 @@
   letter-spacing: -0.04em;
 }
 .contact p {
-  font-size: 16px;
+  font-size: 17px;
   max-width: 450px;
   line-height: 1.45;
 }
 .required-note {
   display: inline-block;
   margin-left: 12px;
-  font-size: 13px !important;
+  font-size: 15px !important;
 }
 .form-status {
   min-height: 1.5em;
@@ -36,7 +36,7 @@
 .field-error {
   display: block;
   color: #9b1744;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 1.4;
   margin-top: 4px;

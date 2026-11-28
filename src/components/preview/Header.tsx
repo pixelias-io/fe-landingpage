@@ -4,6 +4,7 @@ export function Header() {
 
   return (
     <header>
+      <a className="skip-link" href="#top">{t('skipContent', 'Skip to main content')}</a>
       <div className="wrap">
         <nav aria-label={locale === 'pt' ? 'Navegação principal' : 'Main navigation'}>
           <a
@@ -22,6 +23,7 @@ export function Header() {
             <a href="#contact">{t('navContact', 'Contact')}</a>
             <div
               className="lang"
+              role="group"
               aria-label={locale === 'pt' ? 'Idioma' : 'Language'}
             >
               <button
