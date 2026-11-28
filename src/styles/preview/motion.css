@@ -255,6 +255,6 @@
 
 /* Reveal the headline once; the default is visible without motion. */
 @media (prefers-reduced-motion: no-preference) {
-  body:not(.no-js) .hero h1 { animation: headline-fade-in 900ms ease-out both; }
-  @keyframes headline-fade-in { from { opacity: 0; } to { opacity: 1; } }
+  body:not(.no-js) .hero h1 { animation: headline-fade-in 1600ms ease-in-out both; }
+  @keyframes headline-fade-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 }
