@@ -182,7 +182,7 @@
   .improve-plane-3 { --fold-x: 0px; --fold-y: 0px; }
   .improve-plane-4 { --fold-x: -6px; --fold-y: 3px; }
   .improve-plane-5 { --fold-x: -12px; --fold-y: 6px; }
-  .motion-offscreen .step:nth-child(4) svg .improve-plane { animation-play-state: paused; }
+  body:not(.no-js) .motion-offscreen .step:nth-child(4) svg .improve-plane { animation-play-state: paused; }
   @keyframes improve-accordion {
     0%, 100% { transform: translate(0, 0); }
     42%, 58% { transform: translate(var(--fold-x), var(--fold-y)); }
