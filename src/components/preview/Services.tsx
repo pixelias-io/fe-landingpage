@@ -385,11 +385,14 @@ export function Services() {
 <linearGradient id="trend-face" x1="0" y1="1" x2="1" y2="0"><stop stopColor="#ffb24b" stopOpacity=".9"/><stop offset=".46" stopColor="#ff84a9" stopOpacity=".82"/><stop offset="1" stopColor="#b383f4" stopOpacity=".8"/></linearGradient>
 <linearGradient id="trend-side" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#f785ad" stopOpacity=".64"/><stop offset="1" stopColor="#829cf1" stopOpacity=".56"/></linearGradient>
 <linearGradient id="trend-edge"><stop stopColor="#fff3d0"/><stop offset=".55" stopColor="#ffd4ee"/><stop offset="1" stopColor="#efe6ff"/></linearGradient>
+<linearGradient id="trend-depth" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#da718f" stopOpacity=".58"/><stop offset=".5" stopColor="#be78c4" stopOpacity=".5"/><stop offset="1" stopColor="#777dcf" stopOpacity=".48"/></linearGradient>
+<filter id="trend-ambient" x="-100%" y="-150%" width="300%" height="400%"><feGaussianBlur stdDeviation="5"/></filter>
 <radialGradient id="trend-glint"><stop stopColor="#fffaf2" stopOpacity=".6"/><stop offset="1" stopColor="#fff" stopOpacity="0"/></radialGradient>
 </defs>
-<ellipse cx="73" cy="84" rx="55" ry="9" fill="#c69bef" opacity=".15"/>
-<g className="service-part trend-shadow"><path d="M18 77 L51 46 L73 65 L112 25 L120 30 L76 75 L53 55 L24 84 Z" fill="url(#trend-side)" opacity=".52" stroke="url(#trend-edge)" strokeWidth=".7"/></g>
-<g className="service-part trend-arrow"><path d="M16 74 Q13 71 17 67 L46 39 Q50 35 54 39 L73 56 L101 28 L90 28 Q86 28 86 24 Q86 20 90 20 L119 20 Q123 20 123 24 L123 52 Q123 56 119 56 Q115 56 115 52 L115 39 L77 77 Q73 81 69 77 L51 60 L25 81 Q21 84 18 81 Q14 78 16 74 Z" fill="url(#trend-face)" stroke="url(#trend-edge)" strokeWidth="1"/>
+<ellipse cx="69" cy="84" rx="44" ry="7" fill="#ab89d4" opacity=".22" filter="url(#trend-ambient)"/>
+<g className="service-part trend-arrow"><path d="M20 78 L51 47 L73 67 L114 26 L123 24 L127 28 L127 56 Q127 60 123 60 L119 56 L119 43 L81 81 Q77 85 73 81 L55 64 L29 85 Q25 88 22 85 L18 81 Z" fill="url(#trend-depth)" opacity=".65"/>
+<path d="M25 81 L29 85 L55 64 L51 60 Z M77 77 L81 81 L119 43 L115 39 Z M123 24 L127 28 L127 56 Q127 60 123 60 L119 56 Q123 56 123 52 Z" fill="url(#trend-side)" opacity=".65"/>
+<path d="M29 85 L55 64 M81 81 L119 43" fill="none" stroke="#cbb3f2" strokeWidth=".65" opacity=".5"/><path d="M16 74 Q13 71 17 67 L46 39 Q50 35 54 39 L73 56 L101 28 L90 28 Q86 28 86 24 Q86 20 90 20 L119 20 Q123 20 123 24 L123 52 Q123 56 119 56 Q115 56 115 52 L115 39 L77 77 Q73 81 69 77 L51 60 L25 81 Q21 84 18 81 Q14 78 16 74 Z" fill="url(#trend-face)" stroke="url(#trend-edge)" strokeWidth="1"/>
 <path d="M20 72 L49 44 Q51 42 53 44 L73 62 L111 24 L91 24" fill="none" stroke="#fff8ed" strokeWidth="1" opacity=".8"/>
 <path d="M19 75 L49 46 Q51 44 53 46 L72 63 L110 26" fill="none" stroke="url(#trend-glint)" strokeWidth="6" opacity=".35"/>
 <circle cx="83" cy="48" r="19" fill="url(#trend-glint)" opacity=".52"/></g>
